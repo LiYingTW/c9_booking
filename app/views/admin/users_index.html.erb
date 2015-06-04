@@ -1,0 +1,42 @@
+<table>
+    <thead>
+        <tr>
+            <td>Account</td>
+            <td>Name</td>
+            <td>Cell phone</td>
+            <td>Email</td>
+            <td>Send Email</td>
+            <td>Privilege</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do | user | %>
+            <tr>
+                <td><%= user.account %></td>
+                <td><%= user.name %></td>
+                <td><%= user.cell_phone %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <%= 
+                        if user.email_yn == 1
+                            'yes'
+                        else
+                            'no'
+                        end
+                    %>
+                </td>
+                <td>
+                    <%= 
+                    if user.privilege == 0 
+                        'admin'
+                    else
+                        'user'
+                    end
+                    %>
+                </td>
+                <td><%= form_tag(action: 'user_edit', method: 'post') do %><%= submit_tag "edit" %><%= hidden_field_tag(:id, user.id) %><% end %></td>
+                <td><%= form_tag(action: 'user_delete', method: 'post') do %><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this user ?' } %><%= hidden_field_tag(:id, user.id) %><% end %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

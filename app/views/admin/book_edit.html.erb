@@ -1,0 +1,7 @@
+<%= form_for @book, :url => { :controller => 'admin', :action => 'book_update' } do | f | %>
+    <%= render :partial => 'book_form', :locals => { :f => f } %>
+    <div>
+        <%= f.submit "update" %>
+        <%= f.hidden_field :id %>
+    </div>
+<% end %>

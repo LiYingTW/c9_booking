@@ -1,0 +1,14 @@
+--- 2015/06/04 start logging
+current
+  funtionality:
+    login, logout complete (wait for checking)
+    register complete (wait for checking)
+    main page ( announcment + order ) complete (wait for checking and enhancing)
+    management user, book, order, announcement complete (wait for checking and enhancing)
+  
+  config change:
+    /config/initializers/session_store.rb    add , expire_after: 30.minutes => for session expiration
+  
+  other:
+    views/layouts/application.html.erb : add common menu bar
+    controllers/application_controller.rb : add authentication for security

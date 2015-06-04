@@ -1,0 +1,45 @@
+<table>
+    <thead>
+        <tr>
+            <td>Account</td>
+            <td>Name</td>
+            <td>Bookname</td>
+            <td>Pay</td>
+            <td>Pay deadline</td>
+            <td>Price</td>
+            <td>Statue</td>
+            <td>Edit</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @order_list.each do | row | %>
+            <tr>
+                <td><%= row["account"] %></td>
+                <td><%= row["name"] %></td>
+                <td><%= row["bookname"] %></td>
+                <td><%= row["pay"] %></td>
+                <td><%= row["pay_deadline"] %></td>
+                <td><%= row["price"] %></td>
+                <td>
+                    <% if row["affect"] == 1 %>
+                        Complete
+                    <% elsif row["delete_yn"] == 1%>
+                        Cancel
+                    <% else %>
+                        Uncomplete
+                    <% end %>
+                </td>
+                <td>
+                    <% if row["delete_yn"] == 0 and row["affect"] == 0 %>
+                        <%= form_tag(action: 'order_edit', method: 'post') do %>
+                            <%= number_field_tag 'change_pay' %><%= submit_tag "edit" %><br/>
+                            <%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this order ?' } %>
+                            <%= submit_tag "ok", :data => { :confirm => 'Are you sure to complete this order ?' } %>
+                            <%= hidden_field_tag(:id, row["id"]) %>
+                        <% end %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

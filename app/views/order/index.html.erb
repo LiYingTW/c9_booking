@@ -1,0 +1,67 @@
+<article>
+    <div>Announcement</div>
+    <ul>
+        <% @announcement.each do | row | %>
+            <li>
+                <%= row.title %>
+                <ul>
+                    <li><%= row.content %></li>
+                    <li><%= row.created_at %></li>
+                    <li><%= row.updated_at %></li>
+                </ul>
+            </li>
+        <% end %>
+    </ul>
+</article>
+
+<article>
+    <div>Book lists</div>
+    <ul>
+        <% @book_order.each do | row | %>
+            <%= form_tag(action: 'order', method: 'post')  do %>
+                <li>
+                    <%= row["bookname"] %>
+                    <ul>
+                        <li><%= row["coursename"] %></li>
+                        <li><%= row["price"] %></li>
+                        <li><%= row["price_single"] %></li>
+                        <li><%= row["price_team"] %></li>
+                        <li><%= row["team_limit"] %></li>
+                        <li><%= row["booking_deadline"] %></li>
+                        <li><%= row["price_booking"] %></li>
+                        <li><%= row["comment"] %></li>
+                        <li><%= row["pay_deadline"] %></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <% if !row["user_id"].blank? %>
+                        <b>ordered</b>
+                        <ul>
+                            <li><%= row["id"] %></li>
+                            <li><%= row["user_id"] %></li>
+                            <li><%= row["book_id"] %></li>
+                            <li><%= row["pay"] %></li>
+                            <li><%= row["affect"] %></li>
+                            <li><%= row["delete_yn"] %></li>
+                            <li><%= row["number"] %></li>
+                            <li><%= row["created_at"] %></li>
+                            <li><%= row["updated_at"] %></li>
+                        </ul>
+                        
+                        <% if row["affect"] == 1 %>
+                            <span style="color: green;">Order Complete</span>
+                        <% else %>
+                            <%= submit_tag "unorder" %>
+                            <%= hidden_field_tag(:book_id, row["book_id"]) %>
+                            <%= hidden_field_tag(:id, row["id"]) %>
+                        <% end %>
+                    <% else %>
+                        <%= submit_tag "order" %>
+                        <%= hidden_field_tag(:book_id, row["id"]) %>
+                    <% end %>
+                </li>
+            <% end %>
+        <% end %>
+    </ul>
+</article>

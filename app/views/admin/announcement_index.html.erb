@@ -1,0 +1,25 @@
+<div>
+    <%= link_to "Create announcement", :controller => 'admin', :action => 'announcement_new' %>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Content</td>
+            <td>Created time</td>
+            <td>Updated time</td>
+            <td>Edit</td>
+        </tr>
+    </thead>
+    
+    <% @announcement.each do | row | %>
+        <tr>
+            <td><%= row.title %></td>
+            <td><%= row.content %></td>
+            <td><%= row.created_at %></td>
+            <td><%= row.updated_at %></td>
+            <td><%= form_tag(action: 'announcement_edit', method: 'post') do %><%= submit_tag "edit" %><br/><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this announcement ?' } %><%= hidden_field_tag(:id, row.id) %><% end %></td>
+        </tr>
+    <% end %>
+</table>

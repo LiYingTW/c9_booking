@@ -1,0 +1,28 @@
+<%= form_for @user_edit, :url => { :controller => 'admin', :action => 'user_update' } do | f | %>
+    <table>
+        <tbody>
+            <tr>
+                <td><%= f.label :account, "Account" %></td>
+                <td><%= f.text_field :account, :readonly => true %></td>
+            </tr>
+            
+            <tr>
+                <td><%= f.label :password, "Password" %></td>
+                <td><%= f.password_field :password %></td>
+            </tr>
+            
+            <tr>
+                <td><%= f.label :privilege, "Privilege" %></td>
+                <td><%= f.select :privilege, {:user => 1, :admin => 0} %></td>
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="2"><%= f.submit "update" %></td>
+                <td><%= f.hidden_field :id %></td>
+            </tr>
+        </tfoot>
+    </table>
+<% end %>
+

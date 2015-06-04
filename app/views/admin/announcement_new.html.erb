@@ -1,0 +1,7 @@
+<%= form_for @announcement, :url => { :controller => 'admin', :action => 'announcement_create' } do | f | %>
+    <%= render :partial => 'announcement_form', :locals => { :f => f } %>
+    <div>
+        <%= f.submit "create" %>
+        <%= f.hidden_field :id %>
+    </div>
+<% end %>

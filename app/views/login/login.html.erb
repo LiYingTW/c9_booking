@@ -1,0 +1,18 @@
+<%= form_for @user, :url => { :controller => 'login', :action => 'auth' } do | f | %>
+    <table>
+        <tr>
+            <td><%= f.label :account, "Account" %></td>
+            <td><%= f.text_field :account %></td>
+        </tr>
+
+        <tr>
+            <td><%= f.label :password, "Password" %></td>
+            <td><%= f.password_field :password %></td>
+        </tr>
+    
+        <tr>
+            <td><%= f.submit "Login" %></td>
+            <td><%= link_to "Register", :controller => 'user', :action => 'new' %></td>
+        </tr>
+    </table>
+<% end %>

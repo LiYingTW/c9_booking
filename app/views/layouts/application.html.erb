@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if @is_login %>
+<table>
+    <tbody>
+        <tr>
+            <td><%= link_to "Main", :controller => "order", :action => "index" %></td>
+            <td><%= link_to "Profile", :controller => "user", :action => "profile" %></td>
+            <td><%#= link_to "History", :controller => "", :action => "" %></td>
+            <% if @user.is_admin? %>
+            <td><%= link_to "Management - users", :controller => "admin", :action => "users_index" %></td>
+            <td><%= link_to "Management - book", :controller => "admin", :action => "books_index" %></td>
+            <td><%= link_to "Management - announcement", :controller => "admin", :action => "announcement_index" %></td>
+            <td><%= link_to "Management - order", :controller => "admin", :action => "order_index" %></td>
+            <% end %>
+            <td><%= link_to "Logout", :controller => "login", :action => "logout" %></td>
+        </tr>
+    </tbody>
+</table>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

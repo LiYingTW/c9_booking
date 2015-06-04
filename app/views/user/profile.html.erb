@@ -1,0 +1,52 @@
+<%= form_for @user, :url => { :controller => 'user', :action => 'update_profile' } do | f | %>
+    <table>
+        <tr>
+            <td><%= f.label :account, "Account" %></td>
+            <td><%= f.text_field :account, :readonly => true %></td>
+        </tr>
+
+        <tr>
+            <td><%= f.label :name, "Name" %></td>
+            <td><%= f.text_field :name %></td>
+        </tr>
+        
+        <tr>
+            <td><%= f.label :email, "Email" %></td>
+            <td><%= f.text_field :email %></td>
+        </tr>
+        
+        <tr>
+            <td><%= f.label :email_yn, "Email Notify" %></td>
+            <td>yes<%= f.radio_button :email_yn, 1 %>no<%= f.radio_button :email_yn, 0 %></td>
+        </tr>
+        
+        <tr>
+            <td><%= f.label :cell_phone, "Cell Phone" %></td>
+            <td><%= f.text_field :cell_phone %></td>
+        </tr>
+        
+        <tr>
+            <td colspan="2"><%= f.submit "Submit" %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= form_for @user, :url => { :controller => 'user', :action => 'update_password' } do | f | %>
+    <table>
+        <tr>
+            <td><%= f.label :password, "Password" %></td>
+            <td><%= f.password_field :password %></td>
+        </tr>
+        
+        <tr>
+            <td><%= f.label :password_confirm, "Password Confirm" %></td>
+            <td><%= f.password_field :password_confirm %></td>
+        </tr>
+        
+        <tr>
+            <td colspan="2"><%= f.submit "Submit" %></td>
+        </tr>
+    </table>
+<% end %>
+
+<%= link_to "cancel", :controller => 'order', :action => 'index' %>

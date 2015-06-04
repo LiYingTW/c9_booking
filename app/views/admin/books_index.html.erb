@@ -1,0 +1,47 @@
+<div>
+    <%= link_to "Create book", :controller => 'admin', :action => 'book_new' %>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>Bookname</td>
+            <td>isbn</td>
+            <td>coursename</td>
+            <td>price</td>
+            <td>price single</td>
+            <td>price team</td>
+            <td>team limit</td>
+            <td>order deadline</td>
+            <td>state</td>
+            <td>price order</td>
+            <td>comment</td>
+            <td>pay deadline</td>
+            <td>Edit</td>
+        </tr>
+    </thead>
+    
+    <% @books.each do | row | %>
+        <tr>
+            <td><%= row.bookname %></td>
+            <td><%= row.isbn %></td>
+            <td><%= row.coursename %></td>
+            <td><%= row.price %></td>
+            <td><%= row.price_single %></td>
+            <td><%= row.price_team %></td>
+            <td><%= row.team_limit %></td>
+            <td><%= row.booking_deadline %></td>
+            <td>
+                <% if row.state == 0 %>
+                    close
+                <% else %>
+                    open
+                <% end %>
+            </td>
+            <td><%= row.price_booking %></td>
+            <td><%= row.comment %></td>
+            <td><%= row.pay_deadline %></td>
+            <td><%= form_tag(action: 'book_edit', method: 'post') do %><%= submit_tag "edit" %><br/><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this book ?' } %><%= hidden_field_tag(:id, row.id) %><% end %></td>
+        </tr>
+    <% end %>
+</table>

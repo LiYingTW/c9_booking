@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bookname: MyString
+  isbn: MyString
+  coursename: MyString
+  price: 1
+  price_single: 1
+  price_team: 1
+  team_limit: 1
+  booking_deadline: 2015-06-02 16:34:49
+  state: 1
+  price_booking: 1
+  comment: MyString
+  pay_deadline: 2015-06-02 16:34:49
+
+two:
+  bookname: MyString
+  isbn: MyString
+  coursename: MyString
+  price: 1
+  price_single: 1
+  price_team: 1
+  team_limit: 1
+  booking_deadline: 2015-06-02 16:34:49
+  state: 1
+  price_booking: 1
+  comment: MyString
+  pay_deadline: 2015-06-02 16:34:49
