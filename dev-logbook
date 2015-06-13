@@ -12,3 +12,6 @@ current
   other:
     views/layouts/application.html.erb : add common menu bar
     controllers/application_controller.rb : add authentication for security
+    
+--- 2015/06/05
+  announcement email complete

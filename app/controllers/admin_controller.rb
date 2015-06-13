@@ -72,6 +72,14 @@ class AdminController < ApplicationController
         if( params[:commit] == 'delete' )
             @announcement.destroy
             redirect_to controller: 'admin', action: 'announcement_index'
+        elsif( params[:commit] == 'email' )
+            users = User.all
+            users.each do | row |
+                if row.email_yn == 1
+                    UserMailer.notify_announcement(row, @announcement).deliver
+                end
+            end
+            redirect_to controller: 'admin', action: 'announcement_index'
         end
     end
     

@@ -41,5 +41,7 @@ gem 'spring',        group: :development
 #mysql
 gem 'mysql2'
 
+gem 'semantic-ui-sass', '~> 1.11.5.0'
+
 #pageinate
 gem "kaminari"

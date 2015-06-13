@@ -19,7 +19,14 @@
             <td><%= row.content %></td>
             <td><%= row.created_at %></td>
             <td><%= row.updated_at %></td>
-            <td><%= form_tag(action: 'announcement_edit', method: 'post') do %><%= submit_tag "edit" %><br/><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this announcement ?' } %><%= hidden_field_tag(:id, row.id) %><% end %></td>
+            <td>
+                <%= form_tag(action: 'announcement_edit', method: 'post') do %>
+                    <%= submit_tag "edit" %>
+                    <%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this announcement ?' } %>
+                    <%= submit_tag "email", :data => { :confirm => 'Are you sure to mail to every user ?' } %>
+                    <%= hidden_field_tag(:id, row.id) %>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
