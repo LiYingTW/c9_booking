@@ -1,0 +1,32 @@
+<a class="active teal item">
+  <i class="home icon"></i> 
+  <%= link_to "Main", :controller => "order", :action => "index" %>
+</a>
+<a class="green item">
+  <i class="setting icon"></i>
+  <%= link_to "Profile", :controller => "user", :action => "profile" %>
+</a>
+<div class="ui orange inverted right menu">
+  <a class="pink item">
+    <i class="sign out icon"></i>
+    <%= link_to "Logout", :controller => "login", :action => "logout" %>
+  </a>
+</div>
+
+
+<table>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><%#= link_to "History", :controller => "", :action => "" %></td>
+      <% if @user.is_admin? %>
+        <td><%= link_to "Management - users", :controller => "admin", :action => "users_index" %></td>
+        <td><%= link_to "Management - book", :controller => "admin", :action => "books_index" %></td>
+        <td><%= link_to "Management - announcement", :controller => "admin", :action => "announcement_index" %></td>
+        <td><%= link_to "Management - order", :controller => "admin", :action => "order_index" %></td>
+      <% end %>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
