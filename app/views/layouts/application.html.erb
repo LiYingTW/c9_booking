@@ -7,23 +7,17 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body>
+<body style="background-color:#eeeeee;">
 
-<section id="wrapper">
-  
-  <header>
-    <%= render 'layouts/header' %>
-  </header>
-  
-  
+  <nav class="ui menu">
     <% if @is_login %>
         <%= render 'layouts/nav' %>
     <% end %>
-  
-  
-  <%= yield %>
-  
-</section>
+  </nav>
+    
+  <section id="wrapper"> 
+    <%= yield %>
+  </section>
 
 </body>
 </html>

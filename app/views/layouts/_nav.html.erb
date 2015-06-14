@@ -1,30 +1,33 @@
-<nav class="ui menu">
-    <%= link_to({:controller => 'order', :action => 'index'}, class: 'teal item') do %>
-        <i class="home icon"></i> 
-        Main
+<%= link_to({:controller => 'order', :action => 'index'}, class: 'teal item') do %>
+    <i class="home icon"></i> 
+    Main
+<% end %>
+<%= link_to({:controller => 'user', :action => 'profile'}, class: 'green item') do %>
+    <i class='setting icon'></i>
+    Profile
+<% end %>
+<% if @user.is_admin? %>
+    <%= link_to({:controller => 'admin', :action => 'users_index'}, class: 'pink item') do %>
+        <i class="users icon"></i>
+        Users
     <% end %>
-    <%= link_to({:controller => 'user', :action => 'profile'}, class: 'green item') do %>
-        <i class='setting icon'></i>
-        Profile
+    <%= link_to({:controller => 'admin', :action => 'books_index'}, class: 'pink item') do %>
+        <i class="book icon"></i>
+        Book
     <% end %>
-    <% if @user.is_admin? %>
-        <%= link_to({:controller => 'admin', :action => 'users_index'}, class: 'pink item') do %>
-            Users
-        <% end %>
-        <%= link_to({:controller => 'admin', :action => 'books_index'}, class: 'pink item') do %>
-            Book
-        <% end %>
-        <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class: 'pink item') do %>
-            News
-        <% end %>
-        <%= link_to({:controller => 'admin', :action => 'order_index'}, class: 'pink item') do %>
-            Order
-        <% end %>
+    <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class: 'pink item') do %>
+        <i class="bullhorn icon"></i>
+        News
     <% end %>
-    <div class="ui orange inverted right menu">
-        <%= link_to({:controller => 'login', :action => 'logout'}, class: 'item') do %>
-            <i class="sign out icon"></i>
-            Log out
-        <% end %>
-    </div>
-</nav>
+    <%= link_to({:controller => 'admin', :action => 'order_index'}, class: 'pink item') do %>
+        <i class="dollar icon"></i>
+        Order
+    <% end %>
+<% end %>
+<div class="ui orange inverted right menu">
+    <%= link_to({:controller => 'login', :action => 'logout'}, class: 'item') do %>
+        <i class="sign out icon"></i>
+        Log out
+    <% end %>
+</div>
+
