@@ -1,5 +1,8 @@
 <section class="twelve wide column centered"  style="max-width: 650px;">
-    <h3>Announcement</h3>
+    <h3  class="ui center aligned icon blue header">
+        <i class="circular bullhorn inverted icon"></i>
+        NEWS
+    </h3>
     <!--<ul>-->
         <% @announcement.each do | row | %>
             <article class = "segment ui">
@@ -15,7 +18,10 @@
 </section>
 
 <section class="twelve wide column centered" >
-    <h3>Book lists</h3>
+    <h3  class="ui center aligned icon blue header">
+        <i class="circular book inverted icon"></i>
+        BOOK LISTS
+    </h3>
     <ul>
         <% @book_order.each do | row | %>
             <%= form_tag(action: 'order', method: 'post')  do %>
