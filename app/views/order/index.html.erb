@@ -1,25 +1,25 @@
-<article>
-    <div>Announcement</div>
-    <ul>
+<section class="twelve wide column centered"  style="max-width: 650px;">
+    <h3>Announcement</h3>
+    <!--<ul>-->
         <% @announcement.each do | row | %>
-            <li>
+            <article class = "segment ui">
                 <%= row.title %>
                 <ul>
                     <li><%= row.content %></li>
                     <li><%= row.created_at %></li>
                     <li><%= row.updated_at %></li>
                 </ul>
-            </li>
+            </article>
         <% end %>
-    </ul>
-</article>
+    <!--</ul>-->
+</section>
 
-<article>
-    <div>Book lists</div>
+<section class="twelve wide column centered" >
+    <h3>Book lists</h3>
     <ul>
         <% @book_order.each do | row | %>
             <%= form_tag(action: 'order', method: 'post')  do %>
-                <li>
+                <li class = "segment ui">
                     <%= row["bookname"] %>
                     <ul>
                         <li><%= row["coursename"] %></li>
@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 
-                <li>
+                <li class = "segment ui">
                     <% if !row["user_id"].blank? %>
                         <b>ordered</b>
                         <ul>
@@ -64,4 +64,4 @@
             <% end %>
         <% end %>
     </ul>
-</article>
+</section>
