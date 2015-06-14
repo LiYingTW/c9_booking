@@ -3,4 +3,11 @@ development:
   encoding: utf8
   database: c9
   username: <%=ENV['C9_USER']%>
+  host: <%=ENV['IP']%> 
+  
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: c9_test
+  username: <%=ENV['C9_USER']%>
   host: <%=ENV['IP']%>
