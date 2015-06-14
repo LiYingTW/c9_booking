@@ -8,31 +8,30 @@
 					<%= form_for @user, :url => { :controller => 'login', :action => 'auth' } do | f | %>
 					<form class="ui form inverted segment">		    
 				      <div class="field">
-				        <label>Username</label>
+				        <%= f.label :account, "Account" %>
 				        <div class="ui fluid icon input">
-				          <%= f.label :account, "Account" %>
 				          <%= f.text_field :account %>
 				          <i class="user icon"></i>
 				        </div>
 				      </div>
 				      <div class="field">
-				        <label>Password</label>
+				        <%= f.label :password, "Password" %>
 				        <div class="ui fluid icon input">
-				          <%= f.label :password, "Password" %>
 				          <%= f.password_field :password %>
 				          <i class="lock icon"></i>
 				        </div>
 				      </div>
+				      </br>
 				      <div class="ui fluid input">
-				      		<%= f.submit "Login" %>
+				      		<%= f.submit "Login", class:"ui inverted teal submit button" %>
 				      </div>
-				      <!-- <input name = "button" type="submit" value = "Sign in"> -->
+				      
 				    </form>
 				    <div class="ui vertical divider inverted">
 				        Or
                     </div>
                     <div class="center aligned column">
-                        <%= link_to({:controller => 'user', :action => 'new'}, class: '') do %>
+                        <%= link_to({:controller => 'user', :action => 'new'}, class:"huge inverted pink ui labeled icon button") do %>
                             <i class="signup icon"></i>
                             Register
                         <% end %>
