@@ -24,9 +24,15 @@
 			
 			<div class="field">
 				<%= f.label :email_yn, "Email Notify" %>
-				<div class="ui fluid input">
-					yes<%= f.radio_button :email_yn, 1 %>no<%= f.radio_button :email_yn, 0 %> 
-				</div>						
+				<div class="inline field">
+					<%= f.radio_button :email_yn, 1 %>
+					<label>yes</label>
+				</div>
+				<div class="inline field">
+					<%= f.radio_button :email_yn, 0 %>
+					<label>no</label>
+					</br></br>
+				</div>
 			</div>
 			
 			<div class="field">
