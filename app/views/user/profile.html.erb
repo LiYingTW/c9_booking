@@ -47,9 +47,7 @@
     			</div>
     	        </br>
     	      	<div class="ui buttons">
-    			  <div class="ui button" >
-    			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
-    			  </div> 
+    			  <%= link_to "Cancel", {:controller => 'order', :action => 'index'},class:"ui button" %>
     			  <div class="or"></div>
     			  <%= f.submit "Submit" ,class:"ui green button"%>
     			</div>				
@@ -88,9 +86,7 @@
     			</div>
     			</br>
     	      	<div class="ui buttons">
-    			  <div class="ui button">
-    			      <%= link_to "Cancel", :controller => 'order', :action => 'index',class:"ui button" %>
-    			  </div> 
+    			  <%= link_to "Cancel", {:controller => 'order', :action => 'index'},class:"ui button" %>
     			  <div class="or"></div>
     			  <%= f.submit "Submit" ,class:"ui green button"%>
     			</div>				
