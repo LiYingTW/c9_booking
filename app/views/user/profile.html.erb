@@ -1,3 +1,39 @@
+<div class="ui one column stackable centered vertically padded page grid">
+	<div class="twelve wide column">
+		<form class="ui form segment">				
+			<div class="field">
+				<lable>Account</lable>
+				<div class="ui fluid icon input">
+					<i class="user icon"></i>
+					<input name = "account" type="text" value = "" readonly="readonly">
+				</div>						
+			</div>
+			<div class="field">
+				<lable>Password</lable>
+				<div class="ui fluid icon input">
+					<i class="lock icon"></i>
+					<input name = "passwd" type="password" placeholder = "Password"  autofocus required>
+					</div>
+			</div>					
+		
+			<div class="field">
+				<lable>Email</lable>
+				<div class="ui fluid input">
+					<input name = "email" type="email" value = ""  required> 
+					</div>						
+			</div>	
+	
+	      	<div class="ui buttons">
+			  <div class="ui button" >Cancel</div> 
+			  <div class="or"></div>
+			  <input type = "submit" class="ui positive button" value = "Update">
+			</div>				
+		</form>	
+	</div><!--grid-->
+</div><!--grid-->
+
+
+
 <%= form_for @user, :url => { :controller => 'user', :action => 'update_profile' } do | f | %>
     <table>
         <tr>

@@ -1,6 +1,5 @@
 <div class="ui one column stackable centered vertically padded page grid">
     <div class="twelve wide column">
-        
             <div class="ui two column middle aligned relaxed fitted stackable grid inverted segment">
                 <div class="column">
 					<h1 class="ui dividing header inverted">LOGIN</h1>
@@ -10,7 +9,7 @@
 				      <div class="field">
 				        <%= f.label :account, "Account" %>
 				        <div class="ui fluid icon input">
-				          <%= f.text_field :account %>
+				          <%= f.text_field :account, :autofocus=>true, :required=>true, :placeholder => "Account" %>
 				          <i class="user icon"></i>
 				        </div>
 				      </div>
@@ -18,7 +17,7 @@
 				      <div class="field">
 				        <%= f.label :password, "Password" %>
 				        <div class="ui fluid icon input">
-				          <%= f.password_field :password %>
+				          <%= f.password_field :password, :required=>true,:placeholder => "Password" %>
 				          <i class="lock icon"></i>
 				        </div>
 				      </div>
