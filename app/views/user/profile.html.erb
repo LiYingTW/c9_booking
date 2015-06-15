@@ -1,88 +1,78 @@
 <div class="ui one column stackable centered vertically padded page grid">
 	<div class="twelve wide column">
-		<form class="ui form segment">				
+		<%= form_for @user, :url => { :controller => 'user', :action => 'update_profile', class:"ui form segment" } do | f | %>
 			<div class="field">
-				<lable>Account</lable>
+				<%= f.label :account, "Account" %>
 				<div class="ui fluid icon input">
 					<i class="user icon"></i>
-					<input name = "account" type="text" value = "" readonly="readonly">
+					<%= f.text_field :account, :readonly => true %>
 				</div>						
 			</div>
 			<div class="field">
-				<lable>Password</lable>
+				<%= f.label :name, "Name" %>
 				<div class="ui fluid icon input">
-					<i class="lock icon"></i>
-					<input name = "passwd" type="password" placeholder = "Password"  autofocus required>
-					</div>
+					<%= f.text_field :name %>
+				</div>
 			</div>					
 		
 			<div class="field">
-				<lable>Email</lable>
+				<%= f.label :email, "Email" %>
 				<div class="ui fluid input">
-					<input name = "email" type="email" value = ""  required> 
-					</div>						
-			</div>	
-	
+					<%= f.text_field :email %> 
+				</div>						
+			</div>
+			
+			<div class="field">
+				<%= f.label :email_yn, "Email Notify" %>
+				<div class="ui fluid input">
+					yes<%= f.radio_button :email_yn, 1 %>no<%= f.radio_button :email_yn, 0 %> 
+				</div>						
+			</div>
+			
+			<div class="field">
+				<%= f.label :cell_phone, "Cell Phone" %>
+				<div class="ui fluid input">
+					<%= f.text_field :cell_phone %>
+				</div>						
+			</div>
+	        </br>
 	      	<div class="ui buttons">
-			  <div class="ui button" >Cancel</div> 
+			  <div class="ui button" >
+			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
+			  </div> 
 			  <div class="or"></div>
-			  <input type = "submit" class="ui positive button" value = "Update">
+			  <%= f.submit "Submit" ,class:"ui green button"%>
 			</div>				
-		</form>	
+		<% end %>	
 	</div><!--grid-->
 </div><!--grid-->
 
+<div class="ui one column stackable centered vertically padded page grid">
+	<div class="twelve wide column">
+		<%= form_for @user, :url => { :controller => 'user', :action => 'update_password' , class:"ui form segment"} do | f | %>
+			<div class="field">
+				<%= f.label :password, "New Password" %>
+				<div class="ui fluid icon input">
+					<i class="lock icon"></i>
+					<%= f.password_field :password %>
+				</div>						
+			</div>
+			<div class="field">
+				<%= f.label :password_confirm, "Password Confirm" %>
+				<div class="ui fluid icon input">
+				    <i class="lock icon"></i>
+					<%= f.password_field :password_confirm %>
+				</div>
+			</div>
+			</br>
+	      	<div class="ui buttons">
+			  <div class="ui button" >
+			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
+			  </div> 
+			  <div class="or"></div>
+			  <%= f.submit "Submit" ,class:"ui green button"%>
+			</div>				
+		<% end %>	
+	</div><!--grid-->
+</div><!--grid-->
 
-
-<%= form_for @user, :url => { :controller => 'user', :action => 'update_profile' } do | f | %>
-    <table>
-        <tr>
-            <td><%= f.label :account, "Account" %></td>
-            <td><%= f.text_field :account, :readonly => true %></td>
-        </tr>
-
-        <tr>
-            <td><%= f.label :name, "Name" %></td>
-            <td><%= f.text_field :name %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :email, "Email" %></td>
-            <td><%= f.text_field :email %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :email_yn, "Email Notify" %></td>
-            <td>yes<%= f.radio_button :email_yn, 1 %>no<%= f.radio_button :email_yn, 0 %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :cell_phone, "Cell Phone" %></td>
-            <td><%= f.text_field :cell_phone %></td>
-        </tr>
-        
-        <tr>
-            <td colspan="2"><%= f.submit "Submit" %></td>
-        </tr>
-    </table>
-<% end %>
-
-<%= form_for @user, :url => { :controller => 'user', :action => 'update_password' } do | f | %>
-    <table>
-        <tr>
-            <td><%= f.label :password, "Password" %></td>
-            <td><%= f.password_field :password %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :password_confirm, "Password Confirm" %></td>
-            <td><%= f.password_field :password_confirm %></td>
-        </tr>
-        
-        <tr>
-            <td colspan="2"><%= f.submit "Submit" %></td>
-        </tr>
-    </table>
-<% end %>
-
-<%= link_to "cancel", :controller => 'order', :action => 'index' %>
