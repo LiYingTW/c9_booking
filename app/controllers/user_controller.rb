@@ -21,11 +21,9 @@ class UserController < ApplicationController
     end
     
     def profile
-        #@user = User.where( "account = ?", session[:account] )[0]
     end
     
     def update_profile
-        #@user = User.where( "account = ?", session[:account] )[0]
         if @user.update(update_profile_user_params)
             redirect_to controller: 'order', action: 'index'
         else
@@ -34,8 +32,7 @@ class UserController < ApplicationController
     end
     
     def update_password
-        #@user = User.where( "account = ?", session[:account] )[0]
-        if params[:user][:password] == params[:user][:password_confirm]
+        if Digest::MD5.hexdigest( params[:old_password] + 'book_ordering' ) == @user.password and params[:user][:password] == params[:user][:password_confirm]
             @user.update( update_password_user_params )
             redirect_to controller: 'order', action: 'index'
         else

@@ -66,6 +66,13 @@
 		<div class="ui attached segment">
     		<%= form_for @user, :url => { :controller => 'user', :action => 'update_password'} do | f | %>
     			<div class="field">
+    				<%= label_tag "Old Password" %>
+    				<div class="ui fluid icon input">
+    					<i class="lock icon"></i>
+    					<%= password_field_tag 'old_password' %>
+    				</div>						
+    			</div>
+    			<div class="field">
     				<%= f.label :password, "New Password" %>
     				<div class="ui fluid icon input">
     					<i class="lock icon"></i>
@@ -81,8 +88,8 @@
     			</div>
     			</br>
     	      	<div class="ui buttons">
-    			  <div class="ui button" >
-    			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
+    			  <div class="ui button">
+    			      <%= link_to "Cancel", :controller => 'order', :action => 'index',class:"ui button" %>
     			  </div> 
     			  <div class="or"></div>
     			  <%= f.submit "Submit" ,class:"ui green button"%>
