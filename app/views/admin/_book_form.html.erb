@@ -1,6 +1,11 @@
 <table>
     <tbody>
         <tr>
+            <td><%= f.label :picture, "Picture" %></td>
+            <td><%= f.file_field :picture %><br/><span style="color:red;">If you wanted to upload new picture, choosing file directly without deleting old picture first.</span></td>
+        </tr>
+        
+        <tr>
             <td><%= f.label :bookname, "Book name" %></td>
             <td><%= f.text_field :bookname, size: 100 %></td>
         </tr>

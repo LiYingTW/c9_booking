@@ -1,8 +1,7 @@
 class OrderController < ApplicationController
     def index
         @announcement = Announcement.all.order("updated_at DESC")
-        books = Book.all.where("state = 1")
-        #@user = User.where("account = ?", session[:account])[0]
+        books = Book.all.where("state = 1").order("created_at DESC")
         
         @book_order = []
         books.each do | book |

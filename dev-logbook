@@ -15,3 +15,12 @@ current
     
 --- 2015/06/05
   announcement email complete
+  
+--- 2015/06/15
+  add column picture to book
+  management book : can upload picture
+      Uploading new picture directly widthout deleting picture first is ok. 
+      Old picture would be deleted automatically.
+      If there were no change to picture, just pressing update button without entering to picture is ok.
+      Picture wouldn't be update.
+  main page : display picture

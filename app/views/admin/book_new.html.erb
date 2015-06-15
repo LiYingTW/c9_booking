@@ -1,5 +1,6 @@
 <%= form_for @book, :url => { :controller => 'admin', :action => 'book_create' } do | f | %>
     <%= render :partial => 'book_form', :locals => { :f => f } %>
+
     <div>
         <%= f.submit "create" %>
         <%= f.hidden_field :id %>

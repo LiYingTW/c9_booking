@@ -1,4 +1,7 @@
 <%= form_for @book, :url => { :controller => 'admin', :action => 'book_update' } do | f | %>
+    <% if !@book.picture.nil? %>
+        <%= image_tag("upload_books/" + @book.picture, height: '300', width: '200') %>
+    <% end %>
     <%= render :partial => 'book_form', :locals => { :f => f } %>
     <div>
         <%= f.submit "update" %>

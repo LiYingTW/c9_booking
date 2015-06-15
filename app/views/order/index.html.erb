@@ -26,6 +26,11 @@
         <% @book_order.each do | row | %>
             <%= form_tag(action: 'order', method: 'post')  do %>
                 <li class = "segment ui">
+                    <% if !row["picture"].nil? %>
+                        <div>
+                            <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
+                        </div>
+                    <% end %>
                     <%= row["bookname"] %>
                     <ul>
                         <li><%= row["coursename"] %></li>
