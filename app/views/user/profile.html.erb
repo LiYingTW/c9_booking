@@ -1,84 +1,94 @@
 <div class="ui one column stackable centered vertically padded page grid">
 	<div class="twelve wide column">
-		<%= form_for @user, :url => { :controller => 'user', :action => 'update_profile', class:"ui form segment" } do | f | %>
-			<div class="field">
-				<%= f.label :account, "Account" %>
-				<div class="ui fluid icon input">
-					<i class="user icon"></i>
-					<%= f.text_field :account, :readonly => true %>
-				</div>						
-			</div>
-			<div class="field">
-				<%= f.label :name, "Name" %>
-				<div class="ui fluid icon input">
-					<%= f.text_field :name %>
-				</div>
-			</div>					
-		
-			<div class="field">
-				<%= f.label :email, "Email" %>
-				<div class="ui fluid input">
-					<%= f.text_field :email %> 
-				</div>						
-			</div>
-			
-			<div class="field">
-				<%= f.label :email_yn, "Email Notify" %>
-				<div class="inline field">
-					<%= f.radio_button :email_yn, 1 %>
-					<label>yes</label>
-				</div>
-				<div class="inline field">
-					<%= f.radio_button :email_yn, 0 %>
-					<label>no</label>
-					</br></br>
-				</div>
-			</div>
-			
-			<div class="field">
-				<%= f.label :cell_phone, "Cell Phone" %>
-				<div class="ui fluid input">
-					<%= f.text_field :cell_phone %>
-				</div>						
-			</div>
-	        </br>
-	      	<div class="ui buttons">
-			  <div class="ui button" >
-			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
-			  </div> 
-			  <div class="or"></div>
-			  <%= f.submit "Submit" ,class:"ui green button"%>
-			</div>				
-		<% end %>	
+		<h3 class="ui top attached header">
+            Profile
+        </h3>
+		<div class="ui attached segment">
+    		<%= form_for @user, :url => { :controller => 'user', :action => 'update_profile'} do | f | %>
+    			<div class="field">
+    				<%= f.label :account, "Account" %>
+    				<div class="ui fluid icon input">
+    					<i class="user icon"></i>
+    					<%= f.text_field :account, :readonly => true %>
+    				</div>						
+    			</div>
+    			<div class="field">
+    				<%= f.label :name, "Name" %>
+    				<div class="ui fluid icon input">
+    					<%= f.text_field :name %>
+    				</div>
+    			</div>					
+    		
+    			<div class="field">
+    				<%= f.label :email, "Email" %>
+    				<div class="ui fluid input">
+    					<%= f.text_field :email %> 
+    				</div>						
+    			</div>
+    			
+    			<div class="field">
+    				<%= f.label :email_yn, "Email Notify" %>
+    				<div class="inline field">
+    					<%= f.radio_button :email_yn, 1 %>
+    					<label>yes</label>
+    				</div>
+    				<div class="inline field">
+    					<%= f.radio_button :email_yn, 0 %>
+    					<label>no</label>
+    					</br></br>
+    				</div>
+    			</div>
+    			
+    			<div class="field">
+    				<%= f.label :cell_phone, "Cell Phone" %>
+    				<div class="ui fluid input">
+    					<%= f.text_field :cell_phone %>
+    				</div>						
+    			</div>
+    	        </br>
+    	      	<div class="ui buttons">
+    			  <div class="ui button" >
+    			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
+    			  </div> 
+    			  <div class="or"></div>
+    			  <%= f.submit "Submit" ,class:"ui green button"%>
+    			</div>				
+    		<% end %>
+		</div><!--segment-->
 	</div><!--grid-->
 </div><!--grid-->
 
 <div class="ui one column stackable centered vertically padded page grid">
 	<div class="twelve wide column">
-		<%= form_for @user, :url => { :controller => 'user', :action => 'update_password' , class:"ui form segment"} do | f | %>
-			<div class="field">
-				<%= f.label :password, "New Password" %>
-				<div class="ui fluid icon input">
-					<i class="lock icon"></i>
-					<%= f.password_field :password %>
-				</div>						
-			</div>
-			<div class="field">
-				<%= f.label :password_confirm, "Password Confirm" %>
-				<div class="ui fluid icon input">
-				    <i class="lock icon"></i>
-					<%= f.password_field :password_confirm %>
-				</div>
-			</div>
-			</br>
-	      	<div class="ui buttons">
-			  <div class="ui button" >
-			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
-			  </div> 
-			  <div class="or"></div>
-			  <%= f.submit "Submit" ,class:"ui green button"%>
-			</div>				
-		<% end %>	
+		<h3 class="ui top attached header">
+        	Password
+        </h3>
+		<div class="ui attached segment">
+    		<%= form_for @user, :url => { :controller => 'user', :action => 'update_password'} do | f | %>
+    			<div class="field">
+    				<%= f.label :password, "New Password" %>
+    				<div class="ui fluid icon input">
+    					<i class="lock icon"></i>
+    					<%= f.password_field :password %>
+    				</div>						
+    			</div>
+    			<div class="field">
+    				<%= f.label :password_confirm, "Password Confirm" %>
+    				<div class="ui fluid icon input">
+    				    <i class="lock icon"></i>
+    					<%= f.password_field :password_confirm %>
+    				</div>
+    			</div>
+    			</br>
+    	      	<div class="ui buttons">
+    			  <div class="ui button" >
+    			      <%= link_to "Cancel", :controller => 'order', :action => 'index' %>
+    			  </div> 
+    			  <div class="or"></div>
+    			  <%= f.submit "Submit" ,class:"ui green button"%>
+    			</div>				
+    		<% end %>
+		</div><!--segment-->
 	</div><!--grid-->
 </div><!--grid-->
 
