@@ -28,6 +28,7 @@ current
 --- 2015/06/17
   install jquery ui
   add fullPage plugin
+  add slimscroll plugin
   
   done first test----user_controller_test
        instruction:

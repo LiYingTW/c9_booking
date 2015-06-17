@@ -8,13 +8,14 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <nav class="ui menu">
+  <nav class="ui menu" style="position:fixed; z-index:10; width:100%;">
     <% if @is_login %>
         <%= render 'layouts/nav' %>
     <% end %>
   </nav>
-    
-  <div id="content"> 
+  
+  <div id="content">
+    <br/><br/>
     <%= yield %>
   </div>
 

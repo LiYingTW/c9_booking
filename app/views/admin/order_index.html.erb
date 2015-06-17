@@ -21,7 +21,7 @@
                         <td><%= row["name"] %></td>
                         <td><%= row["bookname"] %></td>
                         <td><%= row["pay"] %></td>
-                        <td><%= row["pay_deadline"] %></td>
+                        <td><%= row["pay_deadline"].strftime("%Y/%m/%d") %></td>
                         <td><%= row["price"] %></td>
                         <td>
                             <% if row["affect"] == 1 %>

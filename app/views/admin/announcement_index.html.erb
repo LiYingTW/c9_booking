@@ -18,8 +18,8 @@
         <tr>
             <td><%= row.title %></td>
             <td><%= row.content %></td>
-            <td><%= row.created_at %></td>
-            <td><%= row.updated_at %></td>
+            <td><%= row.created_at.strftime("%Y/%m/%d") %></td>
+            <td><%= row.updated_at.strftime("%Y/%m/%d") %></td>
             <td>
                 <%= form_tag(action: 'announcement_edit', method: 'post') do %>
                     <%= submit_tag "edit" %>

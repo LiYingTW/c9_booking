@@ -1,79 +1,115 @@
-<section class="twelve wide column centered"  style="max-width: 650px;">
-    <h3  class="ui center aligned icon blue header">
-        <i class="circular bullhorn inverted icon"></i>
-        NEWS
-    </h3>
-    <!--<ul>-->
-        <% @announcement.each do | row | %>
-            <article class = "segment ui">
-                <%= row.title %>
-                <ul>
-                    <li><%= row.content %></li>
-                    <li><%= row.created_at %></li>
-                    <li><%= row.updated_at %></li>
-                </ul>
-            </article>
-        <% end %>
-    <!--</ul>-->
-</section>
-    
+<script>
+    $(document).ready(function(){
+        $('#fullpage').fullpage({
+            anchors: ['news', 'books'],
+            sectionsColor: ['#C63D0F', '#1BBC9B'],            
+            css3: true,            
+            scrollOverflow: true
+        });
+    });
+</script>
 
-<section class="twelve wide column centered">
-    <h3  class="ui center aligned icon blue header">
-        <i class="circular book inverted icon"></i>
-        BOOK LISTS
-    </h3>
-    <ul>
-        <% @book_order.each do | row | %>
-            <%= form_tag(action: 'order', method: 'post')  do %>
-                <li class = "segment ui">
-                    <% if !row["picture"].nil? %>
-                        <div>
-                            <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
-                        </div>
-                    <% end %>
-                    <%= row["bookname"] %>
-                    <ul>
-                        <li><%= row["coursename"] %></li>
-                        <li><%= row["price"] %></li>
-                        <li><%= row["price_single"] %></li>
-                        <li><%= row["price_team"] %></li>
-                        <li><%= row["team_limit"] %></li>
-                        <li><%= row["booking_deadline"] %></li>
-                        <li><%= row["price_booking"] %></li>
-                        <li><%= row["comment"] %></li>
-                        <li><%= row["pay_deadline"] %></li>
-                    </ul>
-                </li>
+
+<div id="fullpage">
+    <section class="twelve wide column centered section" id="section0">
+        <% 
+            i = 0
+            yearMonthMark = ''
+        %>
+        <div style="position:absolute; top:100px; left:100px; height:300px; width:150px; background-color: #000000; overflow-y:scroll; z-index: 10;">
+            <% @announcement.each do | row | %>
+                <% 
+                    if row.title.length > 15 
+                        row.title = row.title.slice(0, 15) + '...'
+                    end
+                    
+                    yearMonth = row.created_at.strftime("%Y.%m")
+                %>
                 
-                <li class = "segment ui">
-                    <% if !row["user_id"].blank? %>
-                        <b>ordered</b>
-                        <ul>
-                            <li><%= row["id"] %></li>
-                            <li><%= row["user_id"] %></li>
-                            <li><%= row["book_id"] %></li>
-                            <li><%= row["pay"] %></li>
-                            <li><%= row["affect"] %></li>
-                            <li><%= row["delete_yn"] %></li>
-                            <li><%= row["number"] %></li>
-                            <li><%= row["created_at"] %></li>
-                            <li><%= row["updated_at"] %></li>
-                        </ul>
-                        
-                        <% if row["affect"] == 1 %>
-                            <span style="color: green;">Order Complete</span>
-                        <% else %>
-                            <%= submit_tag "unorder" %>
-                            <%= hidden_field_tag(:book_id, row["book_id"]) %>
-                            <%= hidden_field_tag(:id, row["id"]) %>
-                        <% end %>
-                    <% else %>
-                        <%= submit_tag "order" %>
-                        <%= hidden_field_tag(:book_id, row["id"]) %>
-                    <% end %>
-                </li>
+                <span style="color:#FFFFFF;"><%= yearMonth if yearMonth != yearMonthMark %></span>
+                <% yearMonthMark = yearMonth %>
+                
+                
+                <%= link_to row.title,  "#news/"+i.to_s , style: "display:block;border:1px solid #FFFFFF;" %>
+                <% i+=1 %>
             <% end %>
+        </div>
+    
+        <% i = 0 %>
+        <% @announcement.each do | row | %>
+            <div class="slide" id="slide<%= i %>">
+                <h3  class="ui center aligned icon blue header">
+                    <i class="circular bullhorn inverted icon"></i>
+                    NEWS
+                </h3>
+                
+                <article style="margin: 0 70px;">
+                    <h4><%= row.title %></h4>
+                    <p><%= row.content %></p>
+                    <p>create: <%= row.created_at %> update: <%= row.updated_at %></p>
+                </article>
+            </div>
+        <% i+=1 %>
         <% end %>
-    </ul>
-</section>
+    </section>
+    
+    <section class="twelve wide column centered section" id="section1">
+        <h3  class="ui center aligned icon blue header">
+            <i class="circular book inverted icon"></i>
+            BOOK LISTS
+        </h3>
+        <ul>
+            <% @book_order.each do | row | %>
+                <%= form_tag(action: 'order', method: 'post')  do %>
+                    <li class = "segment ui">
+                        <% if !row["picture"].nil? %>
+                            <div>
+                                <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
+                            </div>
+                        <% end %>
+                        <%= row["bookname"] %>
+                        <ul>
+                            <li><%= row["coursename"] %></li>
+                            <li><%= row["price"] %></li>
+                            <li><%= row["price_single"] %></li>
+                            <li><%= row["price_team"] %></li>
+                            <li><%= row["team_limit"] %></li>
+                            <li><%= row["booking_deadline"] %></li>
+                            <li><%= row["price_booking"] %></li>
+                            <li><%= row["comment"] %></li>
+                            <li><%= row["pay_deadline"] %></li>
+                        </ul>
+                    </li>
+                    
+                    <li class = "segment ui">
+                        <% if !row["user_id"].blank? %>
+                            <b>ordered</b>
+                            <ul>
+                                <li><%= row["id"] %></li>
+                                <li><%= row["user_id"] %></li>
+                                <li><%= row["book_id"] %></li>
+                                <li><%= row["pay"] %></li>
+                                <li><%= row["affect"] %></li>
+                                <li><%= row["delete_yn"] %></li>
+                                <li><%= row["number"] %></li>
+                                <li><%= row["created_at"] %></li>
+                                <li><%= row["updated_at"] %></li>
+                            </ul>
+                            
+                            <% if row["affect"] == 1 %>
+                                <span style="color: green;">Order Complete</span>
+                            <% else %>
+                                <%= submit_tag "unorder" %>
+                                <%= hidden_field_tag(:book_id, row["book_id"]) %>
+                                <%= hidden_field_tag(:id, row["id"]) %>
+                            <% end %>
+                        <% else %>
+                            <%= submit_tag "order" %>
+                            <%= hidden_field_tag(:book_id, row["id"]) %>
+                        <% end %>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+    </section>
+</div>

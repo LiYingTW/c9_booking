@@ -18,3 +18,5 @@
 //= require semantic-ui
 // Loads fullPage javasript
 //= require jquery.fullPage.min.js
+// Loads slimscroll javascript
+//= require jquery.slimscroll.min.js

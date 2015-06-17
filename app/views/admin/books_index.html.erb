@@ -31,7 +31,7 @@
             <td><%= row.price_single %></td>
             <td><%= row.price_team %></td>
             <td><%= row.team_limit %></td>
-            <td><%= row.booking_deadline %></td>
+            <td><%= row.booking_deadline.strftime("%Y/%m/%d") %></td>
             <td>
                 <% if row.state == 0 %>
                     close
@@ -41,7 +41,7 @@
             </td>
             <td><%= row.price_booking %></td>
             <td><%= row.comment %></td>
-            <td><%= row.pay_deadline %></td>
+            <td><%= row.pay_deadline.strftime("%Y/%m/%d") %></td>
             <td><%= form_tag(action: 'book_edit', method: 'post') do %><%= submit_tag "edit" %><br/><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this book ?' } %><%= hidden_field_tag(:id, row.id) %><% end %></td>
         </tr>
     <% end %>
