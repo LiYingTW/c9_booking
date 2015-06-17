@@ -1,46 +1,59 @@
 <% provide(:title, "Order") %>
-<table>
-    <thead>
-        <tr>
-            <td>Account</td>
-            <td>Name</td>
-            <td>Bookname</td>
-            <td>Pay</td>
-            <td>Pay deadline</td>
-            <td>Price</td>
-            <td>Statue</td>
-            <td>Edit</td>
-        </tr>
-    </thead>
-    <tbody>
-        <% @order_list.each do | row | %>
-            <tr>
-                <td><%= row["account"] %></td>
-                <td><%= row["name"] %></td>
-                <td><%= row["bookname"] %></td>
-                <td><%= row["pay"] %></td>
-                <td><%= row["pay_deadline"] %></td>
-                <td><%= row["price"] %></td>
-                <td>
-                    <% if row["affect"] == 1 %>
-                        Complete
-                    <% elsif row["delete_yn"] == 1%>
-                        Cancel
-                    <% else %>
-                        Uncomplete
-                    <% end %>
-                </td>
-                <td>
-                    <% if row["delete_yn"] == 0 and row["affect"] == 0 %>
-                        <%= form_tag(action: 'order_edit', method: 'post') do %>
-                            <%= number_field_tag 'change_pay' %><%= submit_tag "edit" %><br/>
-                            <%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this order ?' } %>
-                            <%= submit_tag "ok", :data => { :confirm => 'Are you sure to complete this order ?' } %>
-                            <%= hidden_field_tag(:id, row["id"]) %>
-                        <% end %>
-                    <% end %>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<section class = "ui one column stackable centered vertically padded page grid">
+    <div class="sixteen wide column">
+        <table class = "ui table">
+            <thead>
+                <tr>
+                    <td>Account</td>
+                    <td>Name</td>
+                    <td>Bookname</td>
+                    <td>Pay</td>
+                    <td>Pay deadline</td>
+                    <td>Price</td>
+                    <td>Statue</td>
+                    <td>Edit</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @order_list.each do | row | %>
+                    <tr>
+                        <td><%= row["account"] %></td>
+                        <td><%= row["name"] %></td>
+                        <td><%= row["bookname"] %></td>
+                        <td><%= row["pay"] %></td>
+                        <td><%= row["pay_deadline"] %></td>
+                        <td><%= row["price"] %></td>
+                        <td>
+                            <% if row["affect"] == 1 %>
+                                Complete
+                            <% elsif row["delete_yn"] == 1%>
+                                Cancel
+                            <% else %>
+                                Uncomplete
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if row["delete_yn"] == 0 and row["affect"] == 0 %>
+                                <%= form_tag(action: 'order_edit', method: 'post',  class:"ui form") do %>
+                                    <div class="ui fluid input">
+                                        <%= number_field_tag 'change_pay', class:'ui dropdown' %>
+                                    </div>
+                                    <div class="field">
+                                        <%= submit_tag "update pay-amount" , class:'ui small teal fluid button' %>
+                                    </div>
+                                    <div class="field">
+                                        <br/><%= submit_tag "delete", class:'ui small fluid button' , :data => { :confirm => 'Are you sure to delete this order ?' } %><br/>
+                                    </div>    
+                                        <%= submit_tag "complete", class:'ui small blue fluid button' , :data => { :confirm => 'Are you sure to complete this order ?' } %>
+                                    <div class="field">    
+                                        <%= hidden_field_tag(:id, row["id"]) %>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</section>
