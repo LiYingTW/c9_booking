@@ -1,3 +1,4 @@
+<% provide(:title, "Book") %>
 <%= form_for @book, :url => { :controller => 'admin', :action => 'book_update' } do | f | %>
     <% if !@book.picture.nil? %>
         <%= image_tag("upload_books/" + @book.picture, height: '300', width: '200') %>

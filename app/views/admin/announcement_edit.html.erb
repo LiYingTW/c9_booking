@@ -1,3 +1,4 @@
+<% provide(:title, "News") %>
 <%= form_for @announcement, :url => { :controller => 'admin', :action => 'announcement_update' } do | f | %>
     <%= render :partial => 'announcement_form', :locals => { :f => f } %>
     <div>

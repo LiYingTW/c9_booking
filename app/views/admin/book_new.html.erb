@@ -1,3 +1,4 @@
+<% provide(:title, "Book") %>
 <%= form_for @book, :url => { :controller => 'admin', :action => 'book_create' } do | f | %>
     <%= render :partial => 'book_form', :locals => { :f => f } %>
 
