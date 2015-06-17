@@ -8,5 +8,24 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  
+  #Append class (for menu) if condition is true (active the item while at that page)
+  def menu_class(page_title = '',element)
+    if page_title.empty? && element==="home"
+      "teal active item"
+    elsif page_title==="Profile" && element==="profile"
+      "green active item"
+    elsif page_title==="Users" && element==="user"
+      "pink active item"
+    elsif page_title==="Book" && element==="book"
+      "red active item"
+    elsif page_title==="News" && element==="news"
+      "blue active item"
+    elsif page_title==="Order" && element==="order"
+      "purple active item"
+    else
+        "item"
+    end
+  end
 end
 

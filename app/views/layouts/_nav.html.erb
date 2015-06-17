@@ -1,31 +1,31 @@
-<%= link_to({:controller => 'order', :action => 'index'}, class: 'teal item', id:"home") do %>
-    <i class="home icon"></i> 
+<%= link_to({:controller => 'order', :action => 'index'}, class:menu_class(yield(:title),"home"), id:"home") do %>
+    <i class="home icon"></i>
     Main
 <% end %>
-<%= link_to({:controller => 'user', :action => 'profile'}, class: 'green item') do %>
+<%= link_to({:controller => 'user', :action => 'profile'}, class:menu_class(yield(:title),"profile")) do %>
     <i class='setting icon'></i>
     Profile
 <% end %>
 <% if @user.is_admin? %>
-    <%= link_to({:controller => 'admin', :action => 'users_index'}, class: 'pink item') do %>
+    <%= link_to({:controller => 'admin', :action => 'users_index'}, class:menu_class(yield(:title),"user")) do %>
         <i class="users icon"></i>
         Users
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'books_index'}, class: 'pink item') do %>
+    <%= link_to({:controller => 'admin', :action => 'books_index'}, class:menu_class(yield(:title),"book")) do %>
         <i class="book icon"></i>
         Book
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class: 'pink item') do %>
+    <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class:menu_class(yield(:title),"news")) do %>
         <i class="bullhorn icon"></i>
         News
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'order_index'}, class: 'pink item') do %>
+    <%= link_to({:controller => 'admin', :action => 'order_index'}, class:menu_class(yield(:title),"order")) do %>
         <i class="dollar icon"></i>
         Order
     <% end %>
 <% end %>
 <div class="ui orange inverted right menu">
-    <%= link_to({:controller => 'login', :action => 'logout'}, class: 'item') do %>
+    <%= link_to({:controller => 'login', :action => 'logout'}, class:menu_class(yield(:title),"")) do %>
         <i class="sign out icon"></i>
         Log out
     <% end %>
