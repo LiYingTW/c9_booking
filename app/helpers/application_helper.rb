@@ -11,7 +11,7 @@ module ApplicationHelper
   
   #Append class (for menu) if condition is true (active the item while at that page)
   def menu_class(page_title = '',element = '')
-    if page_title.empty? && element==="home"
+    if page_title.empty? && element==="home" #main page
       "teal active item"
     elsif page_title==="Profile" && element==="profile"
       "green active item"
@@ -27,5 +27,16 @@ module ApplicationHelper
         "item"
     end
   end
+  
+  
+  #inverted the menu at main page
+  def inverted_menu(page_title = '')
+    if page_title.empty? 
+      "ui inverted menu"
+    else
+      "ui menu"
+    end
+  end
+  
 end
 

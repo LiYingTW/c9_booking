@@ -159,7 +159,7 @@ class AdminController < ApplicationController
     
     def order_edit
         @order = Order.find( params[:id] )
-        if params[:commit] == "edit"
+        if params[:commit] == "update pay-amount"
             @order.pay += order_params["change_pay"].to_i
             @order.save
         elsif params[:commit] == "delete"

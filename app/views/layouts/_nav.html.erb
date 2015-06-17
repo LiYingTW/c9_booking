@@ -1,25 +1,25 @@
-<%= link_to({:controller => 'order', :action => 'index'}, class:menu_class(yield(:title),"home"), id:"home") do %>
+<%= link_to({:controller => 'order', :action => 'index'}, class:menu_class(yield(:title),"home"), id:"home", 'data-no-turbolink' => true) do %>
     <i class="home icon"></i>
     Main
 <% end %>
-<%= link_to({:controller => 'user', :action => 'profile'}, class:menu_class(yield(:title),"profile")) do %>
+<%= link_to({:controller => 'user', :action => 'profile'}, class:menu_class(yield(:title),"profile"), 'data-no-turbolink' => true) do %>
     <i class='setting icon'></i>
     Profile
 <% end %>
 <% if @user.is_admin? %>
-    <%= link_to({:controller => 'admin', :action => 'users_index'}, class:menu_class(yield(:title),"user")) do %>
+    <%= link_to({:controller => 'admin', :action => 'users_index'}, class:menu_class(yield(:title),"user"), 'data-no-turbolink' => true) do %>
         <i class="users icon"></i>
         Users
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'books_index'}, class:menu_class(yield(:title),"book")) do %>
+    <%= link_to({:controller => 'admin', :action => 'books_index'}, class:menu_class(yield(:title),"book"), 'data-no-turbolink' => true) do %>
         <i class="book icon"></i>
         Book
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class:menu_class(yield(:title),"news")) do %>
+    <%= link_to({:controller => 'admin', :action => 'announcement_index'}, class:menu_class(yield(:title),"news"), 'data-no-turbolink' => true) do %>
         <i class="bullhorn icon"></i>
         News
     <% end %>
-    <%= link_to({:controller => 'admin', :action => 'order_index'}, class:menu_class(yield(:title),"order")) do %>
+    <%= link_to({:controller => 'admin', :action => 'order_index'}, class:menu_class(yield(:title),"order"), 'data-no-turbolink' => true) do %>
         <i class="dollar icon"></i>
         Order
     <% end %>
