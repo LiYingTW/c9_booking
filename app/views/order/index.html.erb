@@ -2,7 +2,7 @@
     $(document).ready(function(){
         $('#fullpage').fullpage({
             anchors: ['news', 'books'],
-            sectionsColor: ['#C63D0F', '#1BBC9B'],            
+            sectionsColor: ['#FFC107','#00BCD4'],            
             css3: true,            
             scrollOverflow: true
         });
@@ -16,7 +16,7 @@
             i = 0
             yearMonthMark = ''
         %>
-        <div style="position:absolute; top:100px; left:100px; height:300px; width:150px; background-color: #000000; overflow-y:scroll; z-index: 10;">
+        <div id = "slideMenu">
             <% @announcement.each do | row | %>
                 <% 
                     if row.title.length > 15 
@@ -26,11 +26,11 @@
                     yearMonth = row.created_at.strftime("%Y.%m")
                 %>
                 
-                <span style="color:#FFFFFF;"><%= yearMonth if yearMonth != yearMonthMark %></span>
+                <span><%= yearMonth if yearMonth != yearMonthMark %></span>
                 <% yearMonthMark = yearMonth %>
                 
                 
-                <%= link_to row.title,  "#news/"+i.to_s , style: "display:block;border:1px solid #FFFFFF;" %>
+                <%= link_to row.title,  "#news/"+i.to_s %>
                 <% i+=1 %>
             <% end %>
         </div>
@@ -38,12 +38,13 @@
         <% i = 0 %>
         <% @announcement.each do | row | %>
             <div class="slide" id="slide<%= i %>">
+                </br>
                 <h3  class="ui center aligned icon blue header">
                     <i class="circular bullhorn inverted icon"></i>
                     NEWS
                 </h3>
                 
-                <article style="margin: 0 70px;">
+                <article>
                     <h4><%= row.title %></h4>
                     <p><%= row.content %></p>
                     <p>create: <%= row.created_at %> update: <%= row.updated_at %></p>
@@ -54,62 +55,66 @@
     </section>
     
     <section class="twelve wide column centered section" id="section1">
-        <h3  class="ui center aligned icon blue header">
+        </br>
+        <h3  class="ui center aligned icon header">
             <i class="circular book inverted icon"></i>
             BOOK LISTS
         </h3>
-        <ul>
+        <!--<ul>-->
             <% @book_order.each do | row | %>
                 <%= form_tag(action: 'order', method: 'post')  do %>
-                    <li class = "segment ui">
-                        <% if !row["picture"].nil? %>
-                            <div>
-                                <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
+                    <article class="ui segment">
+                        <div class="ui three column page grid">
+                            <div class="six wide column">
+                                <% if !row["picture"].nil? %>
+                                    <div class="image">
+                                        <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
+                                    </div>
+                                <% end %>
                             </div>
-                        <% end %>
-                        <%= row["bookname"] %>
-                        <ul>
-                            <li><%= row["coursename"] %></li>
-                            <li><%= row["price"] %></li>
-                            <li><%= row["price_single"] %></li>
-                            <li><%= row["price_team"] %></li>
-                            <li><%= row["team_limit"] %></li>
-                            <li><%= row["booking_deadline"] %></li>
-                            <li><%= row["price_booking"] %></li>
-                            <li><%= row["comment"] %></li>
-                            <li><%= row["pay_deadline"] %></li>
-                        </ul>
-                    </li>
-                    
-                    <li class = "segment ui">
-                        <% if !row["user_id"].blank? %>
-                            <b>ordered</b>
-                            <ul>
-                                <li><%= row["id"] %></li>
-                                <li><%= row["user_id"] %></li>
-                                <li><%= row["book_id"] %></li>
-                                <li><%= row["pay"] %></li>
-                                <li><%= row["affect"] %></li>
-                                <li><%= row["delete_yn"] %></li>
-                                <li><%= row["number"] %></li>
-                                <li><%= row["created_at"] %></li>
-                                <li><%= row["updated_at"] %></li>
-                            </ul>
-                            
-                            <% if row["affect"] == 1 %>
-                                <span style="color: green;">Order Complete</span>
-                            <% else %>
-                                <%= submit_tag "unorder" %>
-                                <%= hidden_field_tag(:book_id, row["book_id"]) %>
-                                <%= hidden_field_tag(:id, row["id"]) %>
-                            <% end %>
-                        <% else %>
-                            <%= submit_tag "order" %>
-                            <%= hidden_field_tag(:book_id, row["id"]) %>
-                        <% end %>
-                    </li>
+                            <section class = "six wide column">
+                                <h3><%= row["bookname"] %></h3>
+                                <ui class="ui list">
+                                    <li>課程名稱：<%= row["coursename"] %></li>
+                                    <li>訂價：<%= row["price"] %></li>
+                                    <li>個取價：<%= row["price_single"] %></li>
+                                    <li>團定價：<%= row["price_team"] %>(團訂人數限制：<%= row["team_limit"] %>)</li>
+                                    <li>訂書期限：<%= row["booking_deadline"] %></li>
+                                    <li>繳費期限：<%= row["pay_deadline"] %>(訂金：<%= row["price_booking"] %>)</li>
+                                    <li>備註：<%= row["comment"] %></li>
+                                </ui>
+                            </section>
+                            <section class = "four wide column">
+                                <% if !row["user_id"].blank? %>
+                                    <b>ordered</b>
+                                    <ul class="ui list">
+                                        <li><%= row["id"] %></li>
+                                        <li><%= row["user_id"] %></li>
+                                        <li><%= row["book_id"] %></li>
+                                        <li><%= row["pay"] %></li>
+                                        <li><%= row["affect"] %></li>
+                                        <li><%= row["delete_yn"] %></li>
+                                        <li><%= row["number"] %></li>
+                                        <li><%= row["created_at"] %></li>
+                                        <li><%= row["updated_at"] %></li>
+                                    </ul>
+                                    
+                                    <% if row["affect"] == 1 %>
+                                        <span style="color: green;">Order Complete</span>
+                                    <% else %>
+                                        <%= submit_tag "unorder" %>
+                                        <%= hidden_field_tag(:book_id, row["book_id"]) %>
+                                        <%= hidden_field_tag(:id, row["id"]) %>
+                                    <% end %>
+                                <% else %>
+                                    <%= submit_tag "order" %>
+                                    <%= hidden_field_tag(:book_id, row["id"]) %>
+                                <% end %>
+                            </section>
+                        </div>
+                    </article>
                 <% end %>
             <% end %>
-        </ul>
+        <!--</ul>-->
     </section>
 </div>

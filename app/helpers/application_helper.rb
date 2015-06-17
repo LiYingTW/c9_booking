@@ -32,7 +32,7 @@ module ApplicationHelper
   #inverted the menu at main page
   def inverted_menu(page_title = '')
     if page_title.empty? #main page
-      "ui inverted menu"
+      "ui inverted fixed menu"
     else
       "ui menu"
     end
