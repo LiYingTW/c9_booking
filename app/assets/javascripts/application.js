@@ -16,3 +16,5 @@
 //= require_tree .
 // Loads all Semantic javascripts
 //= require semantic-ui
+// Loads fullPage javasript
+//= require jquery.fullPage.min.js
