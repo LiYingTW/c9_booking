@@ -28,3 +28,19 @@ current
 --- 2015/06/17
   install jquery ui
   add fullPage plugin
+  
+  done first test----user_controller_test
+       instruction:
+            bin/rake test test/controllers/user_controller_test.rb
+       result:
+          > controller_test.rb 
+          > Run options: --seed 21170
+          > 
+          > # Running:
+          > 
+          > ...
+          > 
+          > Finished in 0.202893s, 14.7861 runs/s, 14.7861 assertions/s.
+          > 
+          > 3 runs, 3 assertions, 0 failures, 0 errors, 0 skips
+          
