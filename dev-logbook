@@ -24,3 +24,7 @@ current
       If there were no change to picture, just pressing update button without entering to picture is ok.
       Picture wouldn't be update.
   main page : display picture
+  
+--- 2015/06/17
+  install jquery ui
+  add fullPage plugin
