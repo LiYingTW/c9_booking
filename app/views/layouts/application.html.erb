@@ -9,7 +9,7 @@
 </head>
 <body>
   
-  <nav class="ui menu">
+  <nav class="<%= inverted_menu(yield(:title))%>">
     <% if @is_login %>
         <%= render 'layouts/nav' %>
     <% end %>
