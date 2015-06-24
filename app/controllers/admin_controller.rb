@@ -165,7 +165,7 @@ class AdminController < ApplicationController
         elsif params[:commit] == "delete"
             @order.delete_yn = 1
             @order.save
-        elsif params[:commit] == "ok"
+        elsif params[:commit] == "complete"
             @order.affect = 1
             @order.save
         end

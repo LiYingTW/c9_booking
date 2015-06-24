@@ -3,27 +3,27 @@
     <table>
         <tr>
             <td><%= f.label :account, "Account" %></td>
-            <td><%= f.text_field :account %></td>
+            <td><%= f.text_field :account, :required=>true %></td>
         </tr>
         
         <tr>
             <td><%= f.label :password, "Password" %></td>
-            <td><%= f.password_field :password %></td>
+            <td><%= f.password_field :password, :required=>true %></td>
         </tr>
         
         <tr>
             <td><%= f.label :password_confirm, "Password Confirm" %></td>
-            <td><%= f.password_field :password_confirm %></td>
+            <td><%= f.password_field :password_confirm, :required=>true %></td>
         </tr>
         
         <tr>
             <td><%= f.label :name, "Name" %></td>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name, :required=>true %></td>
         </tr>
         
         <tr>
             <td><%= f.label :email, "Email" %></td>
-            <td><%= f.text_field :email %></td>
+            <td><%= f.text_field :email, :required=>true %></td>
         </tr>
         
         <tr>
@@ -33,7 +33,7 @@
         
         <tr>
             <td><%= f.label :cell_phone, "Cell Phone" %></td>
-            <td><%= f.text_field :cell_phone %></td>
+            <td><%= f.text_field :cell_phone, :required=>true %></td>
         </tr>
         
         <tr>

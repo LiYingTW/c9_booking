@@ -2,12 +2,12 @@
     <tbody>
         <tr>
             <td><%= f.label :title, "Title" %></td>
-            <td><%= f.text_field :title, size: 50 %></td>
+            <td><%= f.text_field :title, size: 50, :required=>true %></td>
         </tr>
         
         <tr>
             <td><%= f.label :content, "Content" %></td>
-            <td><%= f.text_area :content, size: "40x15" %></td>
+            <td><%= f.text_area :content, size: "40x15", :required=>true %></td>
         </tr>
     </tbody>
 </table>

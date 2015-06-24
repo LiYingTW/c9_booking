@@ -1,48 +1,63 @@
 <% provide(:title, "Book") %>
-<div>
-    <%= link_to "Create book", :controller => 'admin', :action => 'book_new' %>
-</div>
 
-<table>
-    <thead>
-        <tr>
-            <td>Bookname</td>
-            <td>isbn</td>
-            <td>coursename</td>
-            <td>price</td>
-            <td>price single</td>
-            <td>price team</td>
-            <td>team limit</td>
-            <td>order deadline</td>
-            <td>state</td>
-            <td>price order</td>
-            <td>comment</td>
-            <td>pay deadline</td>
-            <td>Edit</td>
-        </tr>
-    </thead>
-    
-    <% @books.each do | row | %>
-        <tr>
-            <td><%= row.bookname %></td>
-            <td><%= row.isbn %></td>
-            <td><%= row.coursename %></td>
-            <td><%= row.price %></td>
-            <td><%= row.price_single %></td>
-            <td><%= row.price_team %></td>
-            <td><%= row.team_limit %></td>
-            <td><%= row.booking_deadline.strftime("%Y/%m/%d") %></td>
-            <td>
-                <% if row.state == 0 %>
-                    close
-                <% else %>
-                    open
-                <% end %>
-            </td>
-            <td><%= row.price_booking %></td>
-            <td><%= row.comment %></td>
-            <td><%= row.pay_deadline.strftime("%Y/%m/%d") %></td>
-            <td><%= form_tag(action: 'book_edit', method: 'post') do %><%= submit_tag "edit" %><br/><%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this book ?' } %><%= hidden_field_tag(:id, row.id) %><% end %></td>
-        </tr>
-    <% end %>
-</table>
+<section class = "ui one column page grid">
+    <div class="column">
+        <table class = "ui table">
+            <thead>
+                <tr>
+                    <td>Bookname</td>
+                    <td>isbn</td>
+                    <td>coursename</td>
+                    <td>price</td>
+                    <td class = "display_hidden">price single</td>
+                    <td class = "display_hidden">price team</td>
+                    <td>team limit</td>
+                    <td>order deadline</td>
+                    <td>state</td>
+                    <td>price order</td>
+                    <td>comment</td>
+                    <td>pay deadline</td>
+                    <td>Edit</td>
+                </tr>
+            </thead>
+            
+            <% @books.each do | row | %>
+                <tr>
+                    <td><%= row.bookname %></td>
+                    <td><%= row.isbn %></td>
+                    <td><%= row.coursename %></td>
+                    <td class = "display_hidden"><%= row.price %></td>
+                    <td class = "display_hidden"><%= row.price_single %></td>
+                    <td><%= row.price_team %></td>
+                    <td><%= row.team_limit %></td>
+                    <td><%= row.booking_deadline.strftime("%Y/%m/%d") %></td>
+                    <td>
+                        <% if row.state == 0 %>
+                            close
+                        <% else %>
+                            open
+                        <% end %>
+                    </td>
+                    <td><%= row.price_booking %></td>
+                    <td><%= row.comment %></td>
+                    <td><%= row.pay_deadline.strftime("%Y/%m/%d") %></td>
+                    <td>
+                        <%= form_tag(action: 'book_edit', method: 'post') do %>
+                            <%= submit_tag "edit", class:'ui small fluid button' %>
+                            <br/>
+                            <%= submit_tag "delete", class:'ui small fluid button', :data => { :confirm => 'Are you sure to delete this book ?' } %>
+                            <%= hidden_field_tag(:id, row.id) %>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+            <tfoot class="full-width">
+                <tr>
+                  <th colspan="11">
+                      <%= link_to "Create book", {:controller => 'admin', :action => 'book_new'},class:"ui right floated small primary button" %>
+                  </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>

@@ -4,12 +4,12 @@
         <tbody>
             <tr>
                 <td><%= f.label :account, "Account" %></td>
-                <td><%= f.text_field :account, :readonly => true %></td>
+                <td><%= f.text_field :account, :readonly => true, :required=>true %></td>
             </tr>
             
             <tr>
                 <td><%= f.label :password, "Password" %></td>
-                <td><%= f.password_field :password %></td>
+                <td><%= f.password_field :password, :required=>true %></td>
             </tr>
             
             <tr>

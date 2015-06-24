@@ -1,33 +1,42 @@
 <% provide(:title, "News") %>
-<div>
-    <%= link_to "Create announcement", :controller => 'admin', :action => 'announcement_new' %>
-</div>
-
-<table>
-    <thead>
-        <tr>
-            <td>Title</td>
-            <td>Content</td>
-            <td>Created time</td>
-            <td>Updated time</td>
-            <td>Edit</td>
-        </tr>
-    </thead>
-    
-    <% @announcement.each do | row | %>
-        <tr>
-            <td><%= row.title %></td>
-            <td><%= row.content %></td>
-            <td><%= row.created_at.strftime("%Y/%m/%d") %></td>
-            <td><%= row.updated_at.strftime("%Y/%m/%d") %></td>
-            <td>
-                <%= form_tag(action: 'announcement_edit', method: 'post') do %>
-                    <%= submit_tag "edit" %>
-                    <%= submit_tag "delete", :data => { :confirm => 'Are you sure to delete this announcement ?' } %>
-                    <%= submit_tag "email", :data => { :confirm => 'Are you sure to mail to every user ?' } %>
-                    <%= hidden_field_tag(:id, row.id) %>
-                <% end %>
-            </td>
-        </tr>
-    <% end %>
-</table>
+<section class = "ui one column stackable centered vertically padded page grid">
+    <div class="sixteen wide column">
+        <table class = "ui table">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Content</td>
+                    <td>Created time</td>
+                    <td>Updated time</td>
+                    <td>Edit</td>
+                </tr>
+            </thead>
+            
+            <% @announcement.each do | row | %>
+                <tr>
+                    <td><%= row.title %></td>
+                    <td><%= row.content %></td>
+                    <td><%= row.created_at.strftime("%Y/%m/%d") %></td>
+                    <td><%= row.updated_at.strftime("%Y/%m/%d") %></td>
+                    <td>
+                        <%= form_tag(action: 'announcement_edit', method: 'post') do %>
+                        <div class="3 fluid ui buttons">
+                            <%= submit_tag "edit", class:'ui small teal button' %>
+                            <%= submit_tag "delete", class:'ui small button', :data => { :confirm => 'Are you sure to delete this announcement ?' } %>
+                            <%= submit_tag "email", class:'ui small blue button', :data => { :confirm => 'Are you sure to mail to every user ?' } %>
+                            <%= hidden_field_tag(:id, row.id) %>
+                        </div>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+            <tfoot class="full-width">
+                <tr>
+                  <th colspan="5">
+                      <%= link_to "Create announcement", {:controller => 'admin', :action => 'announcement_new'},class:"ui right floated small primary button" %>
+                  </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
