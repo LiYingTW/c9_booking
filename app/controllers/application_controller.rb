@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :authenticate
+  before_action :error_message, :authenticate # note : careful to the order
+  
+  
   
   
   def authenticate
@@ -29,5 +31,9 @@ class ApplicationController < ActionController::Base
         render "auth_error"
       end
     end
+  end
+  
+  def error_message
+    @error_message = []
   end
 end

@@ -8,10 +8,11 @@ class UserController < ApplicationController
     def create
         if params[:user][:password] == params[:user][:password_confirm]
             @user = User.new(user_params)
-            @user.privilege = 1 #classmate
+            @user.privilege = 1 #normal
             if @user.save
                 redirect_to controller: 'login', action: 'login'
             else
+                @error_message = @user.errors.full_messages
                 render :new
             end
         else
@@ -27,6 +28,7 @@ class UserController < ApplicationController
         if @user.update(update_profile_user_params)
             redirect_to controller: 'order', action: 'index'
         else
+            @error_message = @user.errors.full_messages
             render :profile
         end
     end

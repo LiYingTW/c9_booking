@@ -49,9 +49,11 @@ class AdminController < ApplicationController
         
         if @book.update(book_params)
             if !params[:book][:picture].nil?
-                #delete original picture
-                filepath = Rails.root.join('app','assets','images','upload_books',@book.picture)
-                File.delete( filepath ) if File.exist?( filepath )
+                if !@book.picture.nil? and !@book.picture.empty?
+                    #delete original picture
+                    filepath = Rails.root.join('app','assets','images','upload_books',@book.picture)
+                    File.delete( filepath ) if File.exist?( filepath )
+                end
                 
                 #upload new picture
                 upload_io = params[:book][:picture]
@@ -66,6 +68,7 @@ class AdminController < ApplicationController
         
             redirect_to controller: 'admin', action: 'books_index'
         else
+            @error_message = @book.errors.full_messages
             render :book_edit
         end
     end
@@ -78,16 +81,21 @@ class AdminController < ApplicationController
         @book = Book.new(book_params)
         if @book.save
             upload_io = params[:book][:picture]
-            filename = @book.id.to_s + '.' + upload_io.original_filename.to_s.split('.')[-1]
-            filepath = Rails.root.join('app', 'assets', 'images', 'upload_books', filename)
-            File.open(filepath, 'wb') do | file |
-                file.write(upload_io.read)
+            if !upload_io.nil?
+                #upload picture
+                filename = @book.id.to_s + '.' + upload_io.original_filename.to_s.split('.')[-1]
+                filepath = Rails.root.join('app', 'assets', 'images', 'upload_books', filename)
+                File.open(filepath, 'wb') do | file |
+                    file.write(upload_io.read)
+                end
+                
+                @book.picture = filename
+                @book.save
             end
-            @book.picture = filename
-            @book.save
 
             redirect_to controller: 'admin', action: 'books_index'
         else
+            @error_message = @book.errors.full_messages
             render :book_new
         end
     end
