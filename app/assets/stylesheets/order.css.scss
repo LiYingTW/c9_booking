@@ -89,7 +89,19 @@
     .header{
         color: #00BCD4;
     }
+    .status{
+        font-size:20px;
+    }
     .mark{
        color: #FFA000;
+    }
+    .complete{
+        color: green;
+    }
+    .whiteSpace{
+        margin-left:20px;
+    }
+    .important{
+        color:#00BCD4;
     }
 }
