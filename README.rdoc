@@ -26,3 +26,7 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+環境架設：
+step 1. 到 Cloud9 的網站 c9.io 註冊
+step 2. 

@@ -15,12 +15,12 @@
             <% @announcement.each do | row | %>
                 <tr>
                     <td><%= row.title %></td>
-                    <td><%= row.content %></td>
+                    <td style="max-width:350px;"><%= simple_format(row.content) %></td>
                     <td><%= row.created_at.strftime("%Y/%m/%d") %></td>
                     <td><%= row.updated_at.strftime("%Y/%m/%d") %></td>
                     <td>
                         <%= form_tag(action: 'announcement_edit', method: 'post') do %>
-                        <div class="3 fluid ui buttons">
+                        <div class="ui vertical buttons">
                             <%= submit_tag "edit", class:'ui small teal button' %>
                             <%= submit_tag "delete", class:'ui small button', :data => { :confirm => 'Are you sure to delete this announcement ?' } %>
                             <%= submit_tag "email", class:'ui small blue button', :data => { :confirm => 'Are you sure to mail to every user ?' } %>

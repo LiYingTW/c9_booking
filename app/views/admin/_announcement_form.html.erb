@@ -1,13 +1,9 @@
-<table>
-    <tbody>
-        <tr>
-            <td><%= f.label :title, "Title" %></td>
-            <td><%= f.text_field :title, size: 50, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :content, "Content" %></td>
-            <td><%= f.text_area :content, size: "40x15", :required=>true %></td>
-        </tr>
-    </tbody>
-</table>
+<h4 class="ui dividing header">News</h4>
+<div class="field">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, size: 50, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content, size: "40x15", :required=>true %>
+</div>

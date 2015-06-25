@@ -1,11 +1,17 @@
 <% provide(:title, "Book") %>
-<%= form_for @book, :url => { :controller => 'admin', :action => 'book_update' } do | f | %>
-    <% if !@book.picture.nil? %>
-        <%= image_tag("upload_books/" + @book.picture, height: '300', width: '200') %>
+<div class="ui one column stackable centered vertically padded page grid">
+    <div class="twelve wide column">
+    <%= form_for @book, :url => { :controller => 'admin', :action => 'book_update' }, :html => { class: "ui form segment" } do | f | %>
+        <% if !@book.picture.nil? %>
+            <%= image_tag("upload_books/" + @book.picture, height: '300', width: '200') %>
+        <% end %>
+        <%= render :partial => 'book_form', :locals => { :f => f } %>
+        <div class="ui buttons">
+          <%= link_to "Cancel", {:controller => 'admin', :action => 'books_index'},class:"ui button" %>
+          <div class="or"></div>
+          <%= f.submit "Udate" ,class:"ui green button"%>
+          <%= f.hidden_field :id %>
+        </div>
     <% end %>
-    <%= render :partial => 'book_form', :locals => { :f => f } %>
-    <div>
-        <%= f.submit "update" %>
-        <%= f.hidden_field :id %>
-    </div>
-<% end %>
+    </div><!--grid-->
+</div><!--grid-->

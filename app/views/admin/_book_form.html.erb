@@ -1,68 +1,53 @@
-<table>
-    <tbody>
-        <tr>
-            <td><%= f.label :picture, "Picture" %></td>
-            <td><%= f.file_field :picture %><br/><span style="color:red;">If you wanted to upload new picture, choosing file directly without deleting old picture first.</span></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :bookname, "Book name" %></td>
-            <td><%= f.text_field :bookname, size: 100, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :isbn, "ISBN" %></td>
-            <td><%= f.text_field :isbn, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :coursename, "Course name" %></td>
-            <td><%= f.text_field :coursename, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :price, "Price" %></td>
-            <td><%= f.number_field :price, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :price_single, "Price single" %></td>
-            <td><%= f.number_field :price_single, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :price_team, "Price team" %></td>
-            <td><%= f.number_field :price_team, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :team_limit, "Team limit" %></td>
-            <td><%= f.number_field :team_limit, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :booking_deadline, "Order deadline" %></td>
-            <td><%= f.date_field :booking_deadline, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :state, "State" %></td>
-            <td><%= f.select :state, {:open => 1, :close => 0} %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :price_booking, "Price ordering" %></td>
-            <td><%= f.number_field :price_booking, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :comment, "Comment" %></td>
-            <td><%= f.text_field :comment, size: 100, :required=>true %></td>
-        </tr>
-            
-        <tr>
-            <td><%= f.label :pay_deadline, "Pay deadline" %></td>
-            <td><%= f.date_field :pay_deadline, :required=>true %></td>
-        </tr>
-    </tbody>
-</table>
+<h4 class="ui dividing header">Book</h4>
+<div class="field">
+    <%= f.label :picture, "Picture" %>
+    <%= f.file_field :picture %><br/><span style="color:red;">If you wanted to upload new picture, choosing file directly without deleting old picture first.</span>
+</div>
+<div class="field">
+    <%= f.label :bookname, "Book name" %>
+    <%= f.text_field :bookname, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.text_field :isbn %>
+</div>
+<div class="field">
+    <%= f.label :coursename, "Course name" %>
+    <%= f.text_field :coursename, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :price, "Price" %>
+    <%= f.number_field :price, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :price_single, "Price single" %>
+    <%= f.number_field :price_single, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :price_team, "Price team" %>
+    <%= f.number_field :price_team, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :team_limit, "Team limit" %>
+    <%= f.number_field :team_limit, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :booking_deadline, "Order deadline" %>
+    <%= f.date_field :booking_deadline, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :state, "State" %>
+    <%= f.select :state, {:open => 1, :close => 0} %>
+</div>
+<div class="field">
+    <%= f.label :price_booking, "Price ordering" %>
+    <%= f.number_field :price_booking, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_field :comment, size: 100, :required=>true %>
+</div>
+<div class="field">
+    <%= f.label :pay_deadline, "Pay deadline" %>
+    <%= f.date_field :pay_deadline, :required=>true %>
+</div>

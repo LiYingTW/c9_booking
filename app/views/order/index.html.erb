@@ -30,8 +30,9 @@
                         %>
                         <% @announcement.each do | row | %>
                             <% 
-                                if row.title.length > 10 
-                                    row.title = row.title.slice(0, 10) + '...'
+                                sliceRowTitle = row.title
+                                if row.title.length > 5 
+                                    sliceRowTitle = row.title.slice(0, 5) + '...'
                                 end
                                 
                                 yearMonth = row.created_at.strftime("%Y.%m")
@@ -41,18 +42,17 @@
                             
                             <% yearMonthMark = yearMonth %>
                             
-                            <%= link_to row.title,  "#news/"+j.to_s, class: "ui button toNews" %>
+                            <%= link_to sliceRowTitle,  "#news/"+j.to_s, class: "ui button toNews" %>
                             </br>
                             <% j+=1 %>
                         <% end %>
                     </aside>
                     <article class = "nine wide column">
                         <div class="ui segment">
-                            </br>
-                            <h2><%= row.title %></h2>
-                            </br>
-                            <p class = "content"><%= row.content %></p>
-                            </br>  
+                            <h2 class="ui header"><%= row.title %></h2>
+                            <div class="ui clearing divider"></div>
+                            <p class = "content"><%= simple_format(row.content) %></p>
+                            <div class="ui hidden divider"></div>  
                             <p class = "time">update: <%= row.updated_at.strftime("%Y/%m/%d") %></p>
                         </div>
                     </article>
@@ -69,61 +69,57 @@
             <i class="circular book inverted icon"></i>
             BOOK LISTS
         </h3>-->
-        <div class="ui grid">
+        <div class="ui sixteen wide centered grid">
+        <div class="ui cards">
             <% @book_order.each do | row | %>
                 <%= form_tag(action: 'order', method: 'post')  do %>
-                    <article class=""><!--ui segment-->
-                        <div class=""><!--ui three column page grid-->
-                            <div class=""><!--six wide column-->
-                                <% if !row["picture"].nil? %>
-                                    <div class="image">
-                                        <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
-                                    </div>
-                                <% end %>
+                    <article class="ui card"><!--ui segment-->
+                        <% if !row["picture"].nil? %>
+                            <div class="image">
+                                <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
                             </div>
-                            <section class = "six wide column">
-                                <h2><%= row["bookname"] %></h2>
-                                <ui class="ui list">
-                                    <li>課程名稱：<%= row["coursename"] %></li>
-                                    <li>訂價：<%= row["price"] %></li>
-                                    <li>個取價：<%= row["price_single"] %></li>
-                                    <li>團定價：<%= row["price_team"] %>(團訂人數限制：<%= row["team_limit"] %>)</li>
-                                    <li>訂書期限：<%= row["booking_deadline"] %></li>
-                                    <li>繳費期限：<%= row["pay_deadline"] %>(訂金：<%= row["price_booking"] %>)</li>
-                                    <li>備註：<%= row["comment"] %></li>
-                                </ui>
-                            </section>
-                            <section class = "four wide column">
-                                <% if !row["user_id"].blank? %>
-                                    <b>ordered</b>
-                                    <ul class="ui list">
-                                        <!--<li><%= row["id"] %></li>
-                                        <li><%= row["user_id"] %></li>
-                                        <li><%= row["book_id"] %></li>
-                                        <li><%= row["affect"] %></li>
-                                        <li><%= row["delete_yn"] %></li>
-                                        <li><%= row["updated_at"] %></li>
-                                        <li>訂書時間： <%= row["created_at"]  %></li>-->
-                                        <li>訂購數量：<%= row["number"] %></li>
-                                        <li>已付金額：<%= row["pay"] %></li>
-                                    </ul>
+                        <% end %>
+                        <section class = "content">
+                                <h2 class="header"><%= row["bookname"] %></h2>
+                                <div class="description">
+                                    <ui class="ui list">
+                                        <li>課程名稱：<%= row["coursename"] %></li>
+                                        <li>訂價：<%= row["price"] %></li>
+                                        <li>個取價：<%= row["price_single"] %></li>
+                                        <li>團定價：<%= row["price_team"] %>(團訂人數限制：<%= row["team_limit"] %>)</li>
+                                        <li>訂書期限：<%= DateTime.strptime(row["booking_deadline"].to_s, "%Y-%m-%d" ).strftime("%Y/%m/%d") %></li>
+                                        <li>繳費期限：<%= DateTime.strptime(row["pay_deadline"].to_s, "%Y-%m-%d" ).strftime("%Y/%m/%d") %>(訂金：<%= row["price_booking"] %>)</li>
+                                        <li>備註：<%= row["comment"] %></li>
+                                    </ui>
                                     
-                                    <% if row["affect"] == 1 %>
-                                        <span style="color: green;">Order Complete</span>
+                                    <% if !row["user_id"].blank? %>
+                                        <div class="extra content">  
+                                            </br>
+                                            <b class="mark">ordered</b>
+                                            </br>
+                                            <!--<li>訂書時間： <%= row["created_at"]  %></li>-->
+                                            <span>訂購數量：<%= row["number"] %></span>
+                                            <span class="right floated">已付金額：<%= row["pay"] %></span>
+                                        </div>    
+                                             
+                                        <% if row["affect"] == 1 %>
+                                            <span style="color: green;">Order Complete</span>
+                                        <% else %>
+                                            <%= submit_tag "unorder", :data => { :confirm => "Are you sure to cancel this order ?" } %>
+                                            <%= hidden_field_tag(:book_id, row["book_id"]) %>
+                                            <%= hidden_field_tag(:id, row["id"]) %>
+                                        <% end %>
                                     <% else %>
-                                        <%= submit_tag "unorder", :data => { :confirm => "Are you sure to cancel this order ?" } %>
-                                        <%= hidden_field_tag(:book_id, row["book_id"]) %>
-                                        <%= hidden_field_tag(:id, row["id"]) %>
+                                        <%= submit_tag "order", :data => { :confirm => "Are you sure to order this book ?" } %>
+                                        <%= hidden_field_tag(:book_id, row["id"]) %>
                                     <% end %>
-                                <% else %>
-                                    <%= submit_tag "order", :data => { :confirm => "Are you sure to order this book ?" } %>
-                                    <%= hidden_field_tag(:book_id, row["id"]) %>
-                                <% end %>
-                            </section>
-                        </div>
+                                    
+                                </div>
+                        </section>
                     </article>
                 <% end %>
             <% end %>
+        </div>
         </div>
     </section>
 </div>

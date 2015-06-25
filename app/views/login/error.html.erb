@@ -1,3 +1,21 @@
 <% provide(:title, "Login ERROR") %>
-ERROR
-<%= link_to "re-login", :controller => 'login', :action => 'login', :remote => false %>
+<div class="ui one column stackable centered vertically padded page grid">
+	<div class="eight wide column">
+		<div class="ui inverted segment">
+			<div class="column">
+
+				<h1 class="ui dividing header inverted">Error</h1>
+				<p style="text-size=20px;">Fail connection:<br>
+				your account or password is invalid.</p>
+
+				<div class="column">
+				    <%= link_to({:controller => 'login', :action => 'login'}, class:"inverted pink ui labeled icon button") do %>
+				    <i class="sign in icon"></i>
+				    Back to Sign In
+				    <% end %>
+				</div>
+          
+			</div>
+		</div>
+	</div>
+</div>

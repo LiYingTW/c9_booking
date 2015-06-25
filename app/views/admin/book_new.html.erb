@@ -1,9 +1,14 @@
 <% provide(:title, "Book") %>
-<%= form_for @book, :url => { :controller => 'admin', :action => 'book_create' } do | f | %>
-    <%= render :partial => 'book_form', :locals => { :f => f } %>
-
-    <div>
-        <%= f.submit "create" %>
-        <%= f.hidden_field :id %>
-    </div>
-<% end %>
+<div class="ui one column stackable centered vertically padded page grid">
+    <div class="twelve wide column">
+    <%= form_for @book, :url => { :controller => 'admin', :action => 'book_create' }, :html => { class: "ui form segment" } do | f | %>
+        <%= render :partial => 'book_form', :locals => { :f => f } %>
+        <div class="ui buttons">
+          <%= link_to "Cancel", {:controller => 'admin', :action => 'books_index'},class:"ui button" %>
+          <div class="or"></div>
+          <%= f.submit "Create" ,class:"ui green button"%>
+          <%= f.hidden_field :id %>
+        </div>
+    <% end %>
+    </div><!--grid-->
+</div><!--grid-->

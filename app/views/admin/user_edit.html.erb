@@ -13,7 +13,7 @@
 				<lable>Password</lable>
 				<div class="ui fluid icon input">
 					<i class="lock icon"></i>
-					<%= f.password_field :password, :required=>true %>
+					<%= f.password_field :password, :placeholder => "Password" %>
 				</div>
 			</div>					
 		
@@ -28,6 +28,7 @@
     		  <%= link_to "Cancel", {:controller => 'admin', :action => 'users_index'},class:"ui button" %>
     		  <div class="or"></div>
     		  <%= f.submit "Submit" ,class:"ui green button"%>
+    		  <%= f.hidden_field :id %>
     		</div>
 		<% end %>
 	</div><!--grid-->
