@@ -1,29 +1,35 @@
 <% provide(:title, "Users") %>
-<%= form_for @user_edit, :url => { :controller => 'admin', :action => 'user_update' } do | f | %>
-    <table>
-        <tbody>
-            <tr>
-                <td><%= f.label :account, "Account" %></td>
-                <td><%= f.text_field :account, :readonly => true, :required=>true %></td>
-            </tr>
-            
-            <tr>
-                <td><%= f.label :password, "Password" %></td>
-                <td><%= f.password_field :password, :required=>true %></td>
-            </tr>
-            
-            <tr>
-                <td><%= f.label :privilege, "Privilege" %></td>
-                <td><%= f.select :privilege, {:user => 1, :admin => 0} %></td>
-            </tr>
-        </tbody>
-        
-        <tfoot>
-            <tr>
-                <td colspan="2"><%= f.submit "update" %></td>
-                <td><%= f.hidden_field :id %></td>
-            </tr>
-        </tfoot>
-    </table>
-<% end %>
+<div class="ui one column stackable centered vertically padded page grid">
+	<div class="twelve wide column">
+	    <%= form_for @user_edit, :url => { :controller => 'admin', :action => 'user_update' }, html: { class: "ui form segment" } do | f | %>
+			<div class="field">
+				<lable>Account</lable>
+				<div class="ui fluid icon input">
+					<i class="user icon"></i>
+					<%= f.text_field :account, :readonly => true, :required=>true %>
+				</div>						
+			</div>
+			<div class="field">
+				<lable>Password</lable>
+				<div class="ui fluid icon input">
+					<i class="lock icon"></i>
+					<%= f.password_field :password, :required=>true %>
+				</div>
+			</div>					
+		
+			<div class="field">
+				<lable>Privilege</lable>
+				<div class="ui fluid input">
+					<%= f.select :privilege, {:user => 1, :admin => 0} %>
+				</div>						
+			</div>	
+	
+	        <div class="ui buttons">
+    		  <%= link_to "Cancel", {:controller => 'admin', :action => 'users_index'},class:"ui button" %>
+    		  <div class="or"></div>
+    		  <%= f.submit "Submit" ,class:"ui green button"%>
+    		</div>
+		<% end %>
+	</div><!--grid-->
+</div><!--grid-->
 

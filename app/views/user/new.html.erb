@@ -1,45 +1,78 @@
 <% provide(:title, "New user") %>
-
-<%= form_for @user, :url => { :controller => 'user', :action => 'create' } do | f | %>
-    <table>
-        <tr>
-            <td><%= f.label :account, "Account" %></td>
-            <td><%= f.text_field :account, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :password, "Password" %></td>
-            <td><%= f.password_field :password, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :password_confirm, "Password Confirm" %></td>
-            <td><%= f.password_field :password_confirm, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :name, "Name" %></td>
-            <td><%= f.text_field :name, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :email, "Email" %></td>
-            <td><%= f.text_field :email, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :email_yn, "Email Notify" %></td>
-            <td>yes<%= f.radio_button :email_yn, 1 %>no<%= f.radio_button :email_yn, 0 %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.label :cell_phone, "Cell Phone" %></td>
-            <td><%= f.text_field :cell_phone, :required=>true %></td>
-        </tr>
-        
-        <tr>
-            <td><%= f.submit "Submit" %></td>
-            <td><%= link_to "cancel", :controller => 'login', :action => 'login' %></td>
-        </tr>
-    </table>
-<% end %>
+<div class="ui one column stackable centered vertically padded page grid">
+	<div class="twelve wide column">
+	    <%= form_for @user, :url => { :controller => 'user', :action => 'create' }, html: { class: "ui form inverted segment" } do | f | %>
+		<div class="ui two column middle aligned relaxed fitted stackable grid inverted segment">
+			<div class="column">
+				<h1 class="ui dividing header inverted">Register</h1>
+				<!--<p>or <a href="register.php">Create account</a></p>-->	
+					<!--<h1 class="ui dividing header">Create Account</h1>
+					<p>or <a href="login.php">sign in</a></p>
+					<div class="two fields">-->
+				<div class="field">
+					<%= f.label :account, "Account" %>
+					<div class="ui fluid icon input">
+						<i class="user icon"></i>
+						<%= f.text_field :account, :required=>true, :autofocus => true, :placeholder => "Account" %>
+					</div>						
+				</div>
+				<div class="field">
+					<%= f.label :password, "Password" %>
+					<div class="ui fluid icon input">
+						<i class="lock icon"></i>
+						<%= f.password_field :password, :required=>true, :placeholder => "Password" %>
+					</div>
+				</div>
+				<div class="field">
+					<%= f.label :password_confirm, "Password Confirm" %>
+					<div class="ui fluid icon input">
+						<i class="lock icon"></i>
+						<%= f.password_field :password_confirm, :required=>true, :placeholder => "Password Confirm" %>
+					</div>
+				</div>
+				<!--</div>-->
+                <div class="field">
+				    <%= f.label :name, "Name" %>
+					<div class="ui fluid input">
+						<%= f.text_field :name, :required=>true, :placeholder => "Name" %>
+					</div>						
+				</div>
+				<div class="field">
+					<%= f.label :email, "Email" %>
+					<div class="ui fluid input">
+						<%= f.text_field :email, :required=>true, :placeholder => "Email" %>
+					</div>						
+				</div>
+				<div class="field">
+					<%= f.label :email_yn, "Email Notify" %>
+					<div class="ui fluid input" style="color: white;">
+						<%= f.select :email_yn, {:yes => 1, :no => 0} %>
+					</div>						
+				</div>
+				<div class="field">
+					<%= f.label :cell_phone, "Cell Phone" %>
+					<div class="ui fluid input">
+						<%= f.text_field :cell_phone, :required=>true, :placeholder => "Cell Phone" %>
+					</div>						
+				</div>
+				<div class="ui error message">
+		    		<div class="header">We noticed some issues</div>
+		  		</div>
+				<div class="ui fluid input">
+			        <%= f.submit "Sign up", class:"ui inverted teal submit button" %>
+				</div>
+				<!--<div class="ui attached button inverted teal">Sign up</div>-->
+			</div>
+			<div class="ui vertical divider inverted">
+			    Or
+			</div>
+			<div class="center aligned column">
+                <%= link_to({:controller => 'login', :action => 'login'}, class:"huge inverted pink ui labeled icon button") do %>
+                    <i class="signup icon"></i>
+                    SIGN IN
+                <% end %>
+			</div>
+        <% end %>
+		</div>			
+	</div><!--grid-->
+</div><!--grid-->

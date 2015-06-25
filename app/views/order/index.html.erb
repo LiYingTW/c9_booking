@@ -11,66 +11,70 @@
 
 
 <div id="fullpage">
-    <section class="ui twelve wide column centered page grid section" id="section0">
-        <div class = "stackable doubling two column row">
-        <% 
-            i = 0
-            yearMonthMark = ''
-        %>
-
-        <aside id = "slideMenu" class = "two wide column">
-            <% @announcement.each do | row | %>
-                <% 
-                    if row.title.length > 15 
-                        row.title = row.title.slice(0, 15) + '...'
-                    end
-                    
-                    yearMonth = row.created_at.strftime("%Y.%m")
-                %>
-                
-                <span><%= yearMonth if yearMonth != yearMonthMark %></span>
-                <% yearMonthMark = yearMonth %>
-                
-                
-                <%= link_to row.title,  "#news/"+i.to_s %>
-                <% i+=1 %>
-            <% end %>
-        </aside>
-    
+    <section class="section" id="section0">
         <% i = 0 %>
         <% @announcement.each do | row | %>
-            <div class="slide" id="slide<%= i %>">
-                <div class="ten wide column">
-                </br>
-                <h3  class="ui center aligned icon blue header">
-                    <i class="circular bullhorn inverted icon"></i>
-                    NEWS
-                </h3>
-                
-                <article>
-                    <h4><%= row.title %></h4>
-                    <p><%= row.content %></p>
-                    <p>create: <%= row.created_at %> update: <%= row.updated_at %></p>
-                </article>
+        <div class="slide" id="slide<%= i %>">
+            <!--
+            </br>
+            <h3  class="ui center aligned icon blue header">
+                <i class="circular bullhorn inverted icon"></i>
+                NEWS
+            </h3>-->
+            <div class = "ui centered grid">
+                <div class = "two column row">
+                    <aside id = "slideMenu" class = "three wide column">
+                        <% 
+                            j = 0 
+                            yearMonthMark = ''
+                        %>
+                        <% @announcement.each do | row | %>
+                            <% 
+                                if row.title.length > 10 
+                                    row.title = row.title.slice(0, 10) + '...'
+                                end
+                                
+                                yearMonth = row.created_at.strftime("%Y.%m")
+                            %>
+                            
+                            <span><%= yearMonth if yearMonth != yearMonthMark %></span>
+                            
+                            <% yearMonthMark = yearMonth %>
+                            
+                            <%= link_to row.title,  "#news/"+j.to_s, class: "ui button toNews" %>
+                            </br>
+                            <% j+=1 %>
+                        <% end %>
+                    </aside>
+                    <article class = "nine wide column">
+                        <div class="ui segment">
+                            </br>
+                            <h2><%= row.title %></h2>
+                            </br>
+                            <p class = "content"><%= row.content %></p>
+                            </br>  
+                            <p class = "time">update: <%= row.updated_at.strftime("%Y/%m/%d") %></p>
+                        </div>
+                    </article>
+                </div>
+            <% i+=1 %>
+            <% end %>
             </div>
-            </div>
-        <% i+=1 %>
-        <% end %>
         </div>
     </section>
     
-    <section class="twelve wide column centered section" id="section1">
+    <section class="section" id="section1">
         </br>
-        <h3  class="ui center aligned icon header">
+        <!--<h3  class="ui center aligned icon header">
             <i class="circular book inverted icon"></i>
             BOOK LISTS
-        </h3>
-        <!--<ul>-->
+        </h3>-->
+        <div class="ui grid">
             <% @book_order.each do | row | %>
                 <%= form_tag(action: 'order', method: 'post')  do %>
-                    <article class="ui segment">
-                        <div class="ui three column page grid">
-                            <div class="six wide column">
+                    <article class=""><!--ui segment-->
+                        <div class=""><!--ui three column page grid-->
+                            <div class=""><!--six wide column-->
                                 <% if !row["picture"].nil? %>
                                     <div class="image">
                                         <%= image_tag('upload_books/'+row["picture"], height: '300', width: '200') %>
@@ -78,7 +82,7 @@
                                 <% end %>
                             </div>
                             <section class = "six wide column">
-                                <h3><%= row["bookname"] %></h3>
+                                <h2><%= row["bookname"] %></h2>
                                 <ui class="ui list">
                                     <li>課程名稱：<%= row["coursename"] %></li>
                                     <li>訂價：<%= row["price"] %></li>
@@ -93,15 +97,15 @@
                                 <% if !row["user_id"].blank? %>
                                     <b>ordered</b>
                                     <ul class="ui list">
-                                        <li><%= row["id"] %></li>
+                                        <!--<li><%= row["id"] %></li>
                                         <li><%= row["user_id"] %></li>
                                         <li><%= row["book_id"] %></li>
-                                        <li><%= row["pay"] %></li>
                                         <li><%= row["affect"] %></li>
                                         <li><%= row["delete_yn"] %></li>
-                                        <li><%= row["number"] %></li>
-                                        <li><%= row["created_at"] %></li>
                                         <li><%= row["updated_at"] %></li>
+                                        <li>訂書時間： <%= row["created_at"]  %></li>-->
+                                        <li>訂購數量：<%= row["number"] %></li>
+                                        <li>已付金額：<%= row["pay"] %></li>
                                     </ul>
                                     
                                     <% if row["affect"] == 1 %>
@@ -112,7 +116,7 @@
                                         <%= hidden_field_tag(:id, row["id"]) %>
                                     <% end %>
                                 <% else %>
-                                    <%= submit_tag "order" %>
+                                    <%= submit_tag "order", :data => { :confirm => "Are you sure to order this book ?" } %>
                                     <%= hidden_field_tag(:book_id, row["id"]) %>
                                 <% end %>
                             </section>
@@ -120,6 +124,6 @@
                     </article>
                 <% end %>
             <% end %>
-        <!--</ul>-->
+        </div>
     </section>
 </div>

@@ -15,18 +15,17 @@
     <% end %>
   </nav>
   
-  <div id="error_message" style="color: red;">
-    <%
-      msg_all = ''
-      @error_message.each do | msg | 
-        
-        msg_all += msg + '\n'
-      end
-    %>
-    <% if msg_all != ''  %>
-      <script>alert("<%= msg_all %>");</script>
-    <% end %>
-  </div>
+  <!-- error message -->
+  <%
+    msg_all = ''
+    @error_message.each do | msg | 
+      
+      msg_all += msg + '\n'
+    end
+  %>
+  <% if msg_all != ''  %>
+    <script>alert("<%= msg_all %>");</script>
+  <% end %>
   
   <div id="content">
     <%= yield %>
