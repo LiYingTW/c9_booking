@@ -11,13 +11,14 @@
 
 
 <div id="fullpage">
-    <section class="twelve wide column centered section" id="section0">
+    <section class="ui twelve wide column centered page grid section" id="section0">
+        <div class = "stackable doubling two column row">
         <% 
             i = 0
             yearMonthMark = ''
         %>
 
-        <div id = "slideMenu">
+        <aside id = "slideMenu" class = "two wide column">
             <% @announcement.each do | row | %>
                 <% 
                     if row.title.length > 15 
@@ -34,11 +35,12 @@
                 <%= link_to row.title,  "#news/"+i.to_s %>
                 <% i+=1 %>
             <% end %>
-        </div>
+        </aside>
     
         <% i = 0 %>
         <% @announcement.each do | row | %>
             <div class="slide" id="slide<%= i %>">
+                <div class="ten wide column">
                 </br>
                 <h3  class="ui center aligned icon blue header">
                     <i class="circular bullhorn inverted icon"></i>
@@ -51,8 +53,10 @@
                     <p>create: <%= row.created_at %> update: <%= row.updated_at %></p>
                 </article>
             </div>
+            </div>
         <% i+=1 %>
         <% end %>
+        </div>
     </section>
     
     <section class="twelve wide column centered section" id="section1">
@@ -103,7 +107,7 @@
                                     <% if row["affect"] == 1 %>
                                         <span style="color: green;">Order Complete</span>
                                     <% else %>
-                                        <%= submit_tag "unorder" %>
+                                        <%= submit_tag "unorder", :data => { :confirm => "Are you sure to cancel this order ?" } %>
                                         <%= hidden_field_tag(:book_id, row["book_id"]) %>
                                         <%= hidden_field_tag(:id, row["id"]) %>
                                     <% end %>

@@ -1,11 +1,6 @@
 // Place all the styles related to the order controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/ 
-.slide{
-    
-}
-
-
 
 #slideMenu{
     position:absolute;
@@ -16,15 +11,16 @@
     background-color: #000000;
     overflow-y:scroll;
     z-index: 10;
-}
-
-#slideMenu > span {
+    
+    > span {
     color:#FFFFFF;
-}
-
-#slideMenu > a {
+    }
+    
+    > a {
     display:block;
     border:1px solid #FFFFFF;
+    }
+    
 }
 
 #slide > article{
