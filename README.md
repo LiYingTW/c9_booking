@@ -2,6 +2,7 @@
 
 <div>Topic : Book Ordering System</div>
 <div>Developer : 401410020 李盈 401410069 傅皓群</div>
+<div>Technique and Plugin : Ruby on Rails、sematic UI、fullPage</div>
 
 
 ## 發想
