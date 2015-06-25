@@ -4,7 +4,6 @@
 <div>Developer : 401410020 李盈 401410069 傅皓群</div>
 <div>Technique and Plugin : Ruby on Rails、sematic UI、fullPage</div>
 
-
 ## 發想
 為了讓小型訂書活動可以有一個資訊集中的管理平台，讓負責訂書的人或是要訂書的人可以更便利得參與此活動。
 
@@ -52,3 +51,6 @@
 2. 未完成或取消的訂單，可更新已繳費用：輸入在 update pay-amount 上的輸入欄，再按 udpate pay-amount 按鈕
 3. 可點擊 delete 按鈕刪除訂單
 4. 可點擊 complete 按鈕，確認訂單完成
+
+# memo
+助教可透過帳號 TAviewer (密碼相同) 到開發的 workspace (https://ide.c9.io/fwpp/www-project-dev) 觀看
