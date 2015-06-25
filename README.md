@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # WWW Final Project 2015
 
 <div>Topic : Book Ordering System</div>
@@ -53,8 +52,3 @@
 2. 未完成或取消的訂單，可更新已繳費用：輸入在 update pay-amount 上的輸入欄，再按 udpate pay-amount 按鈕
 3. 可點擊 delete 按鈕刪除訂單
 4. 可點擊 complete 按鈕，確認訂單完成
-=======
-#WWW Final Project 2015
-
-test
->>>>>>> 650a39c0d2ac47cb446d9ad6029fc4970cbac8ae
