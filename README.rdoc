@@ -27,6 +27,10 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-環境架設：
+#環境架設
 step 1. 到 Cloud9 的網站 c9.io 註冊
-step 2. 
+step 2. 創ㄧ新的 workspace - Ruby on Rails
+step 3. git clone https://github.com/LiYingTW/c9_booking.git
+step 4. mysql-ctl start
+step 5. 把 project 的檔案加入
+step 6. 
